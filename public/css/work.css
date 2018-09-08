@@ -117,3 +117,20 @@ h3{
 .img-show{
     margin-top: 40px;
 }
+
+/*公共样式*/
+.in-bl{display: inline-block}
+.in-bl-line{font-size: 0}
+.in-bl-line-item{font-size: 14px;display: inline-block;}
+.v-a-t{vertical-align: top;}
+
+/*导航样式*/
+.menu-item{color:#ffffff;}
+.menu-item1:hover{color:#fc1212;}
+.menu-item2:hover{color:#0080ff;}
+.menu-item3:hover{color:#fef200;}
+
+/*contact us*/
+.contact-weibo:hover{color:#fc1414;}
+.contact-dribble:hover{color:#f04387;}
+.contact-instagram:hover{color:#BC41B5;}

@@ -230,11 +230,11 @@ class IndexController{
      * 关于我恩
      */
     public function about(){
-        return View::show('index/about.html',array());
+        return View::show('index/who.html',array());
     }
 
     public function contact(){
-        return View::show('index/contact.html',array());
+        return View::show('index/contact_new.html',array());
     }
 
 

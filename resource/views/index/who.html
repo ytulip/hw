@@ -1,0 +1,52 @@
+{% extends "_layout/index.html" %}
+{% block style%}
+<style>
+    /*.veil ul li:nth-child(3) a{*/
+    /*color:#FFD48B;*/
+    /*}*/
+
+    @media only screen and (min-width: 1200px) {
+        .sandbox-content {
+            padding-left: 145px;
+            padding-right: 145px;
+        }
+    }
+
+
+    .works-type li:nth-child({{ type }}) a{  color:#FFD48B;  }
+</style>
+{% endblock %}
+{% block pageTitle %}<div style="text-align: center;"><span style="line-height: 34px;font-size: 26px;font-family: FZLTXHB--B51-0;color: #333333;"></span></div>{% endblock %}
+{% block body %}
+<div class="sandbox-content">
+    <h1>WHO WE ARE</h1>
+    <p>一个生长在北方的贫寒少年，当他有一天看到头顶竟有成千上万的御剑仙人，如同蝗群过境。他就想去亲眼去看一看，说书先生所说的那位读书人，东海的滔天大潮、西方的黄沙万里和南荒的巍峨大山。</p>
+
+    <img style="width: 100%;margin-top: 34px;" src="/images/map.png"/>
+
+
+
+    <div class="in-bl-line">
+        <div class="in-bl-line-item v-a-t" style="width: 50%;padding-right: 30px;">
+            <div class="">
+                <div>陈平安</div>
+                <div>陈平安转身坐回长凳，额头还贴着黄纸符箓的裴钱犹豫了一下，将自己位置空了出来，去坐在隋右边身旁。</div>
+            </div>
+
+            <div class="">
+                <div>李宝瓶</div>
+                <div>陈平安开门见山问道“是循着我寄给李宝瓶那封信上的内容，追过来了？可是你来青鸾国做什么，反正我也要去山崖书院找你们的。是为了这场佛道之辩？”</div>
+            </div>
+        </div>
+        <div class="in-bl-line-item v-a-t" style="width: 50%;padding-left: 30px;">
+            <div class="">
+                <div>崔东山</div>
+                <div>饭后朱敛和裴钱收拾桌子，崔东山询问佝偻老人要不要帮忙，朱敛客气说不用，崔东山哦了一声，就跟着陈平安离开屋子，往天井院落潇洒行去。</div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block script %}
+{% endblock %}
