@@ -7,14 +7,31 @@ class IndexController{
 
     public function editorwork(){
         $object = new WorkModel(IndexController::input('id'));
+
+        $imgs = json_decode($object->imgs,true);
+        $texts = json_decode($object->texts,true);
+
+        $imgPro = [];
+
+        foreach ( $imgs as $key=>$item)
+        {
+            $imgPro[] = (Object)['img'=>$item,'text'=>$texts[$key]];
+        }
+
+//        var_dump($imgPro);
+//        exit;
         return View::show('editor_work.html',[
             'id'=>$object->id,
             'type'=>$object->type,
+            'is_home'=>$object->is_home,
+            'width_type'=>$object->width_type,
             'title'=>$object->title,
             'describe'=>$object->describe,
             'face_img'=>$object->face_img,
             'imgs'=>json_decode($object->imgs,true),
-            'abstract'=>$object->abstract
+            'abstract'=>$object->abstract,
+            'texts'=>json_decode($object->texts,true),
+            'imgPro'=>$imgPro
         ]);
     }
 
@@ -80,7 +97,9 @@ class IndexController{
     }
 
     public function home(){
-        return View::show('index/home_new.html',array());
+        return View::show('index/home.html',array(
+            'type'=>IndexController::input('type',1)
+        ));
     }
 
     public function share(){
@@ -116,7 +135,8 @@ class IndexController{
             'title'=>$object->title,
             'describe'=>$object->describe,
             'imgs'=>$imgs,
-            'imgs_type'=>$imgsType
+            'imgs_type'=>$imgsType,
+            'face_img'=>$object->face_img
         ));
     }
 
@@ -177,7 +197,7 @@ class IndexController{
 
     public function modifywork(){
         $object = new WorkModel(IndexController::input('id'));
-        $object->update(\MM\MArray::arrayOnly($_REQUEST,['title','abstract','describe','face_img','type','imgs']));
+        $object->update(\MM\MArray::arrayOnly($_REQUEST,['title','abstract','describe','face_img','type','imgs','is_home','width_type','texts']));
         echo json_encode(['status'=>true,'data'=>$object->id]);
         exit;
     }

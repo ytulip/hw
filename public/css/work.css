@@ -7,7 +7,22 @@
 
 .works-list{font-size: 0;}
 
-.works-list > div{
+.response-width1{
+    display: inline-block;
+    width: 100%;
+    padding-bottom: calc( 100% * 0.79 );
+    position: relative;
+}
+
+
+.response-width2{
+    display: inline-block;
+    width: 50%;
+    padding-bottom: calc( 50% * 0.79 );
+    position: relative;
+}
+
+.works-list > .response-width{
     display: inline-block;
     width: 33.33%;
     padding-bottom: calc( 33.33% * 0.79 );
@@ -33,6 +48,8 @@
     background-color: #d8d8d8;
 }
 
+.work-desc-panel{display: none;}
+
 @media only screen and (max-width: 1200px) {
     .sandbox-content,.sandbox-header {
         padding-left: 150px;
@@ -47,12 +64,22 @@
         padding-right: 80px;
     }
 
-    .works-list > div{
+    .works-list > .response-width{
         display: inline-block;
         width: 50%;
         padding-bottom: calc( 50% * 0.79 );
         position: relative;
     }
+
+    .response-width2{
+        display: inline-block;
+        width: 100%;
+        padding-bottom: calc( 100% * 0.79 );
+        position: relative;
+    }
+
+    .work-item-shade{display: none;}
+    .work-desc-panel{display: block;}
 }
 
 
@@ -134,3 +161,9 @@ h3{
 .contact-weibo:hover{color:#fc1414;}
 .contact-dribble:hover{color:#f04387;}
 .contact-instagram:hover{color:#BC41B5;}
+
+.opr-line{border-top:1px solid #efefef;border-bottom: 1px solid #efefef;}
+.opr-line a{display: inline-block;line-height: 50px;}
+
+.shadow-title{font-size: 16px;color:#ffffff;position: absolute;top:26px;left: 26px;}
+.shadow-desc{font-size: 12px;color:#ffffff;position: absolute;bottom: 26px;left: 26px;}

@@ -87,7 +87,7 @@
                     var listItem = '';
                     console.log(data.data);
                     $.each(data.data,function(key,val){
-                        listItem += '<div><div class="img-wrapper" data-title="'+val.title+'" data-abstract="'+val.abstract+'" data-id='+val.id+'><a href="/work?id="'+val.id+'><img class="work-item" img-data="'+val.face_img+'" src="'+val.face_img+'"/></a></div></div></div>';
+                        listItem += '<div class="response-width'+val.width_type+'"><div class="img-wrapper" data-title="'+val.title+'" data-abstract="'+val.abstract+'" data-id='+val.id+'><a href="/work?id="'+val.id+'><img class="work-item" img-data="'+val.face_img+'" src="'+val.face_img+'"/></a></div></div></div>';
                     });
 //                    for(var item  in data.data){
 //                        console.log(item);

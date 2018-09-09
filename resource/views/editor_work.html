@@ -117,10 +117,27 @@
                     <div>
                         <select name="type">
                             <option>请选择分类</option>
-                            <option value="2" {% if type == 2 %} selected {% endif %}>UI</option>
-                            <option value="3" {% if type == 3 %} selected {% endif %}>手绘</option>
-                            <option value="4" {% if type == 4 %} selected {% endif %}>动画</option>
-                            <option value="5" {% if type == 5 %} selected {% endif %}>摄影</option>
+                            <option value="2" {% if type == 2 %} selected {% endif %}>产品设计</option>
+                            <option value="3" {% if type == 3 %} selected {% endif %}>交互与视觉设计</option>
+                            <option value="4" {% if type == 4 %} selected {% endif %}>企业/品牌设计</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="one-horizontal">
+                    <label>是否主页</label>
+                    <div>
+                        <select name="is_home">
+                            <option value="0" {% if is_home == 0 %} selected {% endif %}>否</option>
+                            <option value="1" {% if is_home == 1 %} selected {% endif %}>是</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="one-horizontal">
+                    <label>作品宽度</label>
+                    <div>
+                        <select name="width_type">
+                            <option value="1" {% if width_type == 1 %} selected {% endif %}>100%</option>
+                            <option value="2" {% if width_type == 2 %} selected {% endif %}>50%</option>
                         </select>
                     </div>
                 </div>
@@ -153,8 +170,11 @@
                     <div>
                         <div style="width: 460px;" class="add-work-list">
 
-                            {% for img in imgs %}
-                            <div class="work-img-box-container"><div class="work-img-box"><img src="{{ img }}"></div><div class="work-img-opr"><a onclick="deleteWork(this)" style="display: table-cell;vertical-align: middle;text-align: right;"><i class="fa fa-remove"></i>删除</a></div></div>
+                            {% for imgItem in imgPro %}
+                            <div class="work-img-box-container"><div class="work-img-box"><img src="{{ imgItem.img }}"></div>
+                                <!--<div class="work-img-opr"><a onclick="deleteWork(this)" style="display: table-cell;vertical-align: middle;text-align: right;"><i class="fa fa-remove"></i>前置文本</a></div>-->
+                                <div class="work-img-opr"><a onclick="changeWidth(this)" style="display: table-cell;vertical-align: middle;text-align: right;">宽度100%</a><a onclick="openAddMember(this)" class="text-opr" style="display: table-cell;vertical-align: middle;text-align: right;" data-text="{{imgItem.text}}"><i class="fa fa-edit"></i>前置文本</a><a onclick="deleteWork(this)" style="display: table-cell;vertical-align: middle;text-align: right;"><i class="fa fa-remove"></i>删除</a></div>
+                            </div>
                             {% endfor %}
 
                             <!--<div>-->
@@ -179,11 +199,29 @@
         </form>
     </div>
 </div>
+
+<div style="position: fixed; top: 0px; bottom: 0px; left: 0px; right: 0px; background-color: rgba(0, 0, 0, 0.6); z-index: 99;display: none;" id="add_member_panel">
+    <div style="padding: 14px;background-color: #ffffff;border-radius: 8px;transform: translate(-50%,-50%);position: absolute;top:50%;left: 50%;width: 540px;">
+        <h4>图片前置文本</h4>
+        <div class="one-horizontal">
+            <div>
+                <textarea style="height: 150px;" id="pre_text"></textarea>
+            </div>
+        </div>
+        <div>
+            <button type="button" class="btn btn-success col-gray-btn mt-32" onclick="yesMask()">确认</button>
+            <button type="button" class="btn btn-success col-gray-btn mt-32" onclick="closeAddMember()">取消</button>
+        </div>
+    </div>
+</div>
 {% endblock %}
 {% block script %}
 <script src="/public/assets/js/imgLiquid.js"></script>
 <script src="/public/js/interact.js"></script>
 <script>
+
+    var maskTrigger = '';
+
     function dragMoveListener (event) {
         var target = event.target,
             // keep the dragged position in the data-x/data-y attributes
@@ -306,6 +344,11 @@
         $(obj).parent().parent().remove();
     }
 
+    function editWork(obj)
+    {
+
+    }
+
     $('body').on('click','#up-face-img',function(){
         $('#img-type').val(1);
         $('input[name="face_img"]').trigger('click');
@@ -347,7 +390,7 @@
                             $(".img-wrapper").imgLiquid();
                         }else{
 
-                            $('#work-img-add').before('<div class="work-img-box-container"><div class="work-img-box"><img src="'+data.path+'"/></div><div class="work-img-opr"><a onclick="deleteWork(this)" style="display: table-cell;vertical-align: middle;text-align: right;"><i class="fa fa-remove"></i>删除</a></div></div>');
+                            $('#work-img-add').before('<div class="work-img-box-container"><div class="work-img-box"><img src="'+data.path+'"/></div><div class="work-img-opr"><a onclick="changeWidth(this)" style="display: table-cell;vertical-align: middle;text-align: right;">宽度100%</a><a onclick="openAddMember(this)" class="text-opr" style="display: table-cell;vertical-align: middle;text-align: right;"><i class="fa fa-edit"></i>前置文本</a><a onclick="deleteWork(this)" style="display: table-cell;vertical-align: middle;text-align: right;"><i class="fa fa-remove"></i>删除</a></div></div>');
                             $(".work-img-box").imgLiquid();
                         }
 
@@ -375,15 +418,24 @@
 
         //详细图片
         var imgs = [];
+        var texts = [];
 
         $('.work-img-box').find('img').each(function(){
             imgs.push($(this).attr('src'));
         });
 
+        $('.work-img-opr').find('.text-opr').each(function(){
+            texts.push($(this).attr('data-text'));
+        });
+
+
+
+
+
         console.log(face_img);
         console.log(imgs);
 
-        var data = formData + '&face_img=' + face_img+ '&imgs=' + JSON.stringify(imgs);
+        var data = formData + '&face_img=' + face_img+ '&imgs=' + JSON.stringify(imgs) + '&texts=' + JSON.stringify(texts);
         console.log(data);
 
         $.ajax({
@@ -406,5 +458,41 @@
         $(".img-wrapper").imgLiquid();
         $(".work-img-box").imgLiquid();
     });
+
+    function closeAddMember()
+    {
+        $('#add_member_panel').hide();
+        $('#up_member_panel').hide();
+    }
+
+    function openAddMember(obj)
+    {
+        $('#pre_text').val($(obj).attr('data-text'));
+        maskTrigger = obj;
+        // $('textarea[name="describe"]').html('896');
+        $('#add_member_panel').show();
+    }
+
+
+    function yesMask()
+    {
+
+        // console.log($('textarea[name="describe"]').html());
+        $(maskTrigger).attr('data-text',$('#pre_text').val());
+        closeAddMember();
+    }
+
+    function changeWidth(obj)
+    {
+        if ( $(obj).attr('data-width') == 1 )
+        {
+            $(obj).attr('data-width',2);
+            $(obj).text('宽度50%');
+        } else {
+            $(obj).attr('data-width',1);
+            $(obj).text('宽度100%');
+        }
+    }
+
 </script>
 {% endblock %}
