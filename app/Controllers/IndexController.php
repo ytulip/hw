@@ -10,12 +10,13 @@ class IndexController{
 
         $imgs = json_decode($object->imgs,true);
         $texts = json_decode($object->texts,true);
+        $widthTypes = json_decode($object->width_types,true);
 
         $imgPro = [];
 
         foreach ( $imgs as $key=>$item)
         {
-            $imgPro[] = (Object)['img'=>$item,'text'=>$texts[$key]];
+            $imgPro[] = (Object)['img'=>$item,'text'=>$texts[$key],'width_type'=>$widthTypes[$key],'width_type_text'=>($widthTypes[$key] == "1")?100:50];
         }
 
 //        var_dump($imgPro);
@@ -197,7 +198,7 @@ class IndexController{
 
     public function modifywork(){
         $object = new WorkModel(IndexController::input('id'));
-        $object->update(\MM\MArray::arrayOnly($_REQUEST,['title','abstract','describe','face_img','type','imgs','is_home','width_type','texts']));
+        $object->update(\MM\MArray::arrayOnly($_REQUEST,['title','abstract','describe','face_img','type','imgs','is_home','width_type','texts','width_types']));
         echo json_encode(['status'=>true,'data'=>$object->id]);
         exit;
     }

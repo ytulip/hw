@@ -173,7 +173,7 @@
                             {% for imgItem in imgPro %}
                             <div class="work-img-box-container"><div class="work-img-box"><img src="{{ imgItem.img }}"></div>
                                 <!--<div class="work-img-opr"><a onclick="deleteWork(this)" style="display: table-cell;vertical-align: middle;text-align: right;"><i class="fa fa-remove"></i>前置文本</a></div>-->
-                                <div class="work-img-opr"><a onclick="changeWidth(this)" style="display: table-cell;vertical-align: middle;text-align: right;">宽度100%</a><a onclick="openAddMember(this)" class="text-opr" style="display: table-cell;vertical-align: middle;text-align: right;" data-text="{{imgItem.text}}"><i class="fa fa-edit"></i>前置文本</a><a onclick="deleteWork(this)" style="display: table-cell;vertical-align: middle;text-align: right;"><i class="fa fa-remove"></i>删除</a></div>
+                                <div class="work-img-opr"><a onclick="changeWidth(this)" style="display: table-cell;vertical-align: middle;text-align: right;" data-width="{{imgItem.width_type}}" class="width-opr">宽度{{imgItem.width_type_text}}%</a><a onclick="openAddMember(this)" class="text-opr" style="display: table-cell;vertical-align: middle;text-align: right;" data-text="{{imgItem.text}}"><i class="fa fa-edit"></i>前置文本</a><a onclick="deleteWork(this)" style="display: table-cell;vertical-align: middle;text-align: right;"><i class="fa fa-remove"></i>删除</a></div>
                             </div>
                             {% endfor %}
 
@@ -390,7 +390,7 @@
                             $(".img-wrapper").imgLiquid();
                         }else{
 
-                            $('#work-img-add').before('<div class="work-img-box-container"><div class="work-img-box"><img src="'+data.path+'"/></div><div class="work-img-opr"><a onclick="changeWidth(this)" style="display: table-cell;vertical-align: middle;text-align: right;">宽度100%</a><a onclick="openAddMember(this)" class="text-opr" style="display: table-cell;vertical-align: middle;text-align: right;"><i class="fa fa-edit"></i>前置文本</a><a onclick="deleteWork(this)" style="display: table-cell;vertical-align: middle;text-align: right;"><i class="fa fa-remove"></i>删除</a></div></div>');
+                            $('#work-img-add').before('<div class="work-img-box-container"><div class="work-img-box"><img src="'+data.path+'"/></div><div class="work-img-opr"><a onclick="changeWidth(this)" style="display: table-cell;vertical-align: middle;text-align: right;" class="width-opr">宽度100%</a><a onclick="openAddMember(this)" class="text-opr" style="display: table-cell;vertical-align: middle;text-align: right;"><i class="fa fa-edit"></i>前置文本</a><a onclick="deleteWork(this)" style="display: table-cell;vertical-align: middle;text-align: right;"><i class="fa fa-remove"></i>删除</a></div></div>');
                             $(".work-img-box").imgLiquid();
                         }
 
@@ -419,6 +419,7 @@
         //详细图片
         var imgs = [];
         var texts = [];
+        var width_types = [];
 
         $('.work-img-box').find('img').each(function(){
             imgs.push($(this).attr('src'));
@@ -428,6 +429,10 @@
             texts.push($(this).attr('data-text'));
         });
 
+        $('.work-img-opr').find('.width-opr').each(function(){
+            width_types.push($(this).attr('data-width'));
+        });
+
 
 
 
@@ -435,7 +440,7 @@
         console.log(face_img);
         console.log(imgs);
 
-        var data = formData + '&face_img=' + face_img+ '&imgs=' + JSON.stringify(imgs) + '&texts=' + JSON.stringify(texts);
+        var data = formData + '&face_img=' + face_img+ '&imgs=' + JSON.stringify(imgs) + '&texts=' + JSON.stringify(texts) + '&width_types=' + JSON.stringify(width_types);
         console.log(data);
 
         $.ajax({
