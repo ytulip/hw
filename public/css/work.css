@@ -7,6 +7,7 @@
 
 /*公共项目*/
 .easy-l{margin-top:60px;}
+.m-padding{padding-left:0;padding-right:0;  }
 
 .common-padding{padding-left: 95px;padding-right: 95px;}
 .header-wrapper{padding:50px 95px 46px 95px;}
@@ -138,6 +139,7 @@
     .drawer-height{height: 14px;}
     .logo-height{height: 16px;}
     .easy-l{margin-top: 30px;}
+    .m-padding{padding-left: 16px;padding-right: 16px;}
 }
 
 
