@@ -123,21 +123,108 @@ class IndexController{
     public function work(){
         $object = new WorkModel(IndexController::input('id'));
         $imgs = json_decode($object->imgs,true);
+        $texts = json_decode($object->texts,true);
+        $widthTypes = json_decode($object->width_types,true);
         $imgsType = [];
+        $items = [];
         foreach ( $imgs as $key=>$img) {
             if(strpos($img,'/server/upload') !== false) {
                 $imgs[$key] = str_replace('jpg','mp4',$img);
             }
 //            $imgs[$key] = str_replace('jpg','mp4',$img);
             $imgsType[] = strpos($img,'/server/upload')?0:1;
+            if( $texts[$key] != '')
+            {
+                $items[] = ['type'=>2,'content'=>$texts[$key],'width_type'=>2];
+            }
+            $items[] = ['type'=>1,'content'=>$img,'width_type'=>$widthTypes[$key]];
         }
+
+        $lineItems = [];
+        $itemTmp = [];
+//        var_dump($items);
+        foreach ( $items as $key=>$item)
+        {
+//            if($key == 4)
+//            {
+//                var_dump($item);
+//            }
+
+//            if( $key > 4)
+//            {
+//                echo 789;
+//            }
+//            var_dump($item->width_type);
+            if( $item['width_type'] == 1)
+            {
+//                var_dump($itemTmp);
+//                var_dump($itemTmp);
+                //前面一个压榨
+                if( count($itemTmp) )
+                {
+                    $lineItems[] = $itemTmp;
+                    $itemTmp = [];
+                }
+                $itemTmp[] = $item;
+                $lineItems[] = $itemTmp;
+                $itemTmp = [];
+//                echo 1;
+                continue;
+            }
+//            echo 2;
+
+//            if($key == 4)
+//            {
+//                var_dump(count($itemTmp));
+//            }
+//            var_dump(count($itemTmp));
+//            exit;
+            if( count($itemTmp) == 0 )
+            {
+                $itemTmp[] = $item;
+//                var_dump($itemTmp);
+                continue;
+            }
+
+            if( count($itemTmp) == 1 )
+            {
+                $itemTmp[] = $item;
+                continue;
+            }
+
+            if( count($itemTmp) == 2){
+                $lineItems[] = $itemTmp;
+                $itemTmp = [];
+                $itemTmp[] = $item;
+            }
+
+            $lineItems[] = $itemTmp;
+            $itemTmp = [];
+            continue;
+        }
+
+//        var_dump($itemTmp);
+        if( count($itemTmp) )
+        {
+            $lineItems[] = $itemTmp;
+        }
+
+//        var_dump($lineItems);
+//        exit;
+
+//        var_dump($lineItems);
+//        exit;
+
+
         return View::show('index/work.html',array(
             'type'=>$object->type,
             'title'=>$object->title,
+            'abstract'=>$object->abstract,
             'describe'=>$object->describe,
             'imgs'=>$imgs,
             'imgs_type'=>$imgsType,
-            'face_img'=>$object->face_img
+            'face_img'=>$object->face_img,
+            'lineItems'=>$lineItems
         ));
     }
 
