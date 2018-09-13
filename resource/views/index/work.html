@@ -126,7 +126,9 @@
             {% for item in line %}
                 {% if item['type'] == 1 %}
                     <div class="in-bl-line-item response-free-width{{item['width_type']}} v-a-t">
-                        <img src="{{item['content']}}" style="width:100%;"/>
+                        <div class="img-show-panel">
+                            <img src="{{item['content']}}" style="width:100%;"/>
+                        </div>
                     </div>
                 {% endif %}
 
@@ -156,6 +158,8 @@
 //            controls:true,
 //        });
 //    });
+
+    $(".img-show-panel").imgLiquid();
 
 
     function getQueryString(name) {
