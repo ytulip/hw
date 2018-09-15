@@ -12,6 +12,29 @@
     color: #000000;
     letter-spacing: 1px;
     line-height: 85.68px;}
+.title-text{font-family: Arial;font-size: 60px;
+    color: #000000;
+    letter-spacing: 0;
+    line-height: 78px;}
+.classify-text{
+    font-family: PingFangSC-Regular;
+    font-size: 14px;
+    color: #383838;
+    letter-spacing: 0;
+    line-height: 30px;
+}
+.copyright-text{
+    font-family: PingFangSC-Regular;
+    font-size: 12px;
+    color: #909094;
+    letter-spacing: 0;
+}
+.copyright-panel
+{
+    position: absolute;bottom: 0;right: 0;
+}
+.map-width{width: 610px;}
+.ov-hid{overflow: hidden;}
 
 .common-padding{padding-left: 95px;padding-right: 95px;}
 .header-wrapper{padding:50px 95px 46px 95px;}
@@ -62,10 +85,10 @@
 
 .img-wrapper{
     position: absolute;
-    top:6px;
-    right: 6px;
-    bottom: 6px;
-    left: 6px;
+    top:0;
+    right: 0;
+    bottom: 0;
+    left: 0;
 }
 
 .img-wrapper img{
@@ -80,6 +103,14 @@
 }
 
 .work-desc-panel{display: none;}
+.work-desc-panel h1{font-family: PingFangSC-Regular;
+    font-size: 14px;
+    color: #383838;
+    letter-spacing: 0;margin-top:30px; }
+.work-desc-panel p{font-family: PingFangSC-Regular;
+    font-size: 12px;
+    color: #A6A6A6;
+    letter-spacing: 0;margin-bottom: 30px;}
 
 
 .easy-l .response-free-width2:nth-child(1)
@@ -151,6 +182,17 @@
     .logo-height{height: 16px;}
     .easy-l{margin-top: 30px;}
     .m-padding{padding-left: 16px;padding-right: 16px;}
+    .copyright-panel
+    {
+        display: none;
+    }
+    .map-width{width: 100%;}
+
+    .sologon-text{font-family: Arial;
+        font-size: 24px;
+        color: #000000;
+        letter-spacing: 0.16px;
+        line-height: 34.27px;}
 }
 
 
@@ -178,7 +220,7 @@
     }
 }
 
-.works-type{
+.works-type , .works-type-new{
     list-style: none;
     padding: 0px;
     font-size: 0;
@@ -198,7 +240,13 @@
     color: #FFD48B;
 }
 
+.works-type-new li a:hover{
+    cursor: pointer;
+    /*color: #FFD48B;*/
+}
+
 .works-type li{display: inline-block;border: 1px solid #DDDDDD;padding: 2px 7px;min-width: 50px;text-align: center;font-size: 16px;margin-left: 6px;}
+.works-type-new li{display: inline-block;padding: 2px 7px;min-width: 50px;text-align: center;font-size: 16px;margin-left: 6px;}
 
 h3{
     color: #ffffff;

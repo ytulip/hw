@@ -28,6 +28,7 @@ class IndexController{
             'width_type'=>$object->width_type,
             'title'=>$object->title,
             'describe'=>$object->describe,
+            'banner_img'=>$object->banner_img,
             'face_img'=>$object->face_img,
             'imgs'=>json_decode($object->imgs,true),
             'abstract'=>$object->abstract,
@@ -145,21 +146,8 @@ class IndexController{
 //        var_dump($items);
         foreach ( $items as $key=>$item)
         {
-//            if($key == 4)
-//            {
-//                var_dump($item);
-//            }
-
-//            if( $key > 4)
-//            {
-//                echo 789;
-//            }
-//            var_dump($item->width_type);
             if( $item['width_type'] == 1)
             {
-//                var_dump($itemTmp);
-//                var_dump($itemTmp);
-                //前面一个压榨
                 if( count($itemTmp) )
                 {
                     $lineItems[] = $itemTmp;
@@ -168,21 +156,12 @@ class IndexController{
                 $itemTmp[] = $item;
                 $lineItems[] = $itemTmp;
                 $itemTmp = [];
-//                echo 1;
                 continue;
             }
-//            echo 2;
 
-//            if($key == 4)
-//            {
-//                var_dump(count($itemTmp));
-//            }
-//            var_dump(count($itemTmp));
-//            exit;
             if( count($itemTmp) == 0 )
             {
                 $itemTmp[] = $item;
-//                var_dump($itemTmp);
                 continue;
             }
 
@@ -203,17 +182,22 @@ class IndexController{
             continue;
         }
 
-//        var_dump($itemTmp);
+
         if( count($itemTmp) )
         {
             $lineItems[] = $itemTmp;
         }
 
-//        var_dump($lineItems);
-//        exit;
-
-//        var_dump($lineItems);
-//        exit;
+        $workList = DB::select('select * from work order by power asc,id desc');
+        $currentIndex = -1;
+        foreach ( $workList as $key=>$item)
+        {
+            if( $item->id == $object->id )
+            {
+                $currentIndex = $key;
+                break;
+            }
+        }
 
 
         return View::show('index/work.html',array(
@@ -224,7 +208,10 @@ class IndexController{
             'imgs'=>$imgs,
             'imgs_type'=>$imgsType,
             'face_img'=>$object->face_img,
-            'lineItems'=>$lineItems
+            'banner_img'=>$object->banner_img,
+            'lineItems'=>$lineItems,
+            'prev'=>isset($workList[$currentIndex - 1])?$workList[$currentIndex - 1]->id:'',
+            'next'=>isset($workList[$currentIndex + 1])?$workList[$currentIndex + 1]->id:''
         ));
     }
 
@@ -285,7 +272,7 @@ class IndexController{
 
     public function modifywork(){
         $object = new WorkModel(IndexController::input('id'));
-        $object->update(\MM\MArray::arrayOnly($_REQUEST,['title','abstract','describe','face_img','type','imgs','is_home','width_type','texts','width_types']));
+        $object->update(\MM\MArray::arrayOnly($_REQUEST,['title','abstract','describe','face_img','type','imgs','is_home','width_type','texts','width_types','banner_img']));
         echo json_encode(['status'=>true,'data'=>$object->id]);
         exit;
     }
@@ -305,6 +292,19 @@ class IndexController{
      */
     public function worklist(){
         $type = IndexController::input('type');
+
+
+        /**
+         * 首页推荐
+         */
+        if( $type == 1)
+        {
+            $list = DB::select('select * from work where is_home = 1 order by power asc,id desc');
+            echo json_encode(array('status'=>true,'data'=>$list));
+            exit;
+        }
+
+
         if($type){
             $list = DB::select('select * from work where type = ' . intval($type) . ' order by power asc,id desc');
         }else{

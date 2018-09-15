@@ -107,7 +107,7 @@
 {% block body %}
 
 <div class="m-padding">
-    <img src="{{face_img}}" style="width: 100%;"/>
+    <img src="{{ banner_img }}" style="width: 100%;"/>
 </div>
 
 <div class="common-padding">
@@ -144,8 +144,13 @@
 
 
 
-    <div class="opr-line easy-l" style="margin-bottom: 100px;">
-        <a>上一项目</a> <a style="float: right;">下一项目</a>
+    <div class="opr-line easy-l ov-hid" style="margin-bottom: 100px;">
+        {% if prev %}
+            <a href="/work?id={{ prev }}">上一项目</a>
+        {% endif %}
+        {% if next %}
+            <a style="float: right;" href="/work?id={{ next }}">下一项目</a>
+        {% endif %}
     </div>
 </div>
 {% endblock %}

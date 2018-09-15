@@ -39,7 +39,7 @@
         <!--<div><div class="img-wrapper"><div class="img-data" img-data="http://zhuyan.me/img/example/4.jpg"/></div></div></div>-->
     </div>
 
-    <div class="opr-line">
+    <div class="opr-line easy-l" style="margin-bottom: 100px;">
         <a href="javascript:openMenu();">更多</a>
     </div>
 </div>
@@ -85,7 +85,7 @@
     function refreshWork(){
         $.ajax({
             url:'/worklist',
-            data:{type:getQueryString('type')},
+            data:{type:1},
             dataType:'json',
             success:function(data){
                 if(data.status){
