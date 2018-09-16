@@ -36,6 +36,15 @@
     color: #909094;
     letter-spacing: 0;
 }
+
+.contact-us-text{
+    font-family: PingFangSC-Regular;
+    font-size: 24px;
+    color: #909094;
+    letter-spacing: 0;
+}
+
+
 .copyright-panel
 {
     position: absolute;bottom: 0;right: 0;
@@ -102,6 +111,7 @@
 
 .body-padding{padding-top: 120px;}
 .padding-60-30{padding-top: 60px;}
+.padding-120-60{padding-top: 120px;}
 
 .img-wrapper{
     position: absolute;
@@ -234,12 +244,20 @@
         line-height: 24px;font-weight: bold;}
 
     .contact-item{width: 100% !important;margin-top: 30px;}
+    .contact-item:nth-child(1){margin-top: 0;}
     .contact-dribble{margin-left: 0;}
     .contact-instagram{margin-left: 0;}
     .home-margin{margin-top: 30px;margin-bottom: 30px;}
 
     .body-padding{padding-top: 49px;}
     .padding-60-30{padding-top: 30px;}
+    .padding-120-60{padding-top: 60px;}
+    .contact-us-text{
+        font-family: PingFangSC-Regular;
+        font-size: 16px !important;
+        color: #909094;
+        letter-spacing: 0;
+    }
 }
 
 
