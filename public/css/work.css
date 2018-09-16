@@ -6,7 +6,7 @@
 }
 
 /*公共项目*/
-.easy-l{margin-top:60px;}
+.easy-l{margin-top:30px;}
 .m-padding{padding-left:0;padding-right:0;  }
 .sologon-text{font-family: Arial;font-size: 60px;
     color: #000000;
@@ -148,12 +148,12 @@
 
 .easy-l .response-free-width2:nth-child(1)
 {
-    padding-right: 30px;
+    padding-right: 15px;
 }
 
 .easy-l .response-free-width2:nth-child(2)
 {
-    padding-left: 30px;
+    padding-left: 15px;
 }
 
 .drawer-height{height: 24px;}
