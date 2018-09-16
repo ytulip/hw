@@ -163,6 +163,8 @@
 .logo-height{height: 26px;}
 .t-al-r{text-align: right;}
 
+.p-t-30-0{padding-top: 30px;}
+
 @media only screen and (max-width: 1200px) {
     .sandbox-content,.sandbox-header {
         padding-left: 150px;
@@ -264,6 +266,7 @@
     }
     .only-m{display: block;}
     .only-p{display: none;}
+    .p-t-30-0{padding-top: 0;}
 }
 
 
