@@ -312,7 +312,7 @@
 }
 
 .works-type li{display: inline-block;border: 1px solid #DDDDDD;padding: 2px 7px;min-width: 50px;text-align: center;font-size: 16px;margin-left: 6px;}
-.works-type-new li{display: inline-block;padding: 2px 0;min-width: 50px;text-align: left;font-size: 16px;margin-right: 13px;}
+.works-type-new li{display: inline-block;padding: 2px 0;text-align: left;font-size: 16px;margin-right: 30px;}
 
 h3{
     color: #ffffff;
