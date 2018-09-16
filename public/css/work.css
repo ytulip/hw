@@ -44,6 +44,9 @@
     letter-spacing: 0;
 }
 
+.only-m{display: none;}
+.only-p{display: block;}
+
 
 .copyright-panel
 {
@@ -259,6 +262,8 @@
         color: #383838;
         letter-spacing: 0;
     }
+    .only-m{display: block;}
+    .only-p{display: none;}
 }
 
 
