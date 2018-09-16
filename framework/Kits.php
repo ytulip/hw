@@ -59,4 +59,26 @@ class Kits{
         }
         return '/public/images/avatar.png';
     }
+
+    public static function typeText($type)
+    {
+        $text = '';
+        switch ( $type )
+        {
+            case 2:
+                $text = '产品设计';
+                break;
+            case 3:
+                $text = '交互与视觉设计';
+                break;
+            case 4:
+                $text = '企业/品牌设计';
+                break;
+            default:
+                $text = '全部';
+
+        }
+
+        return $text;
+    }
 }

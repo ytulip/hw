@@ -12,6 +12,8 @@
         }
     }
 
+    #draw_list{display: none;}
+
 
     .works-type li:nth-child({{ type }}) a{  color:#FFD48B;  }
 </style>
@@ -27,6 +29,23 @@
         <li><a href="/works?type=3" class="classify-text">交互与视觉设计</a></li>
         <li><a href="/works?type=4" class="classify-text">企业/品牌设计</a></li>
     </ul>
+</div>
+
+<div class="menu-m-panel" style="margin-bottom: 30px;">
+    <div class="in-bl-line">
+        <div class="in-bl-line-item v-a-m" style="width: 50%"><div class="classify-text">{{ typeText }}</div></div>
+        <div class="in-bl-line-item t-al-r v-a-m" style="width: 50%">
+            <img style="width: 16px;" src="/public/images/icon_add_nor@3x.png" onclick="drawSwitch()" id="switch_img" data-type="0"/>
+        </div>
+    </div>
+    <div style="border-bottom: 1px solid #000000;margin-top: 16px;"></div>
+
+    <div id="draw_list">
+        <div class="classify-text" style="margin-top: 30px;"><a class="classify-text" href="/works?type=2">产品设计</a></div>
+        <div class="classify-text" style="margin-top: 30px;"><a class="classify-text" href="/works?type=3">交互与视觉设计</a></div>
+        <div class="classify-text" style="margin-top: 30px;"><a class="classify-text" href="/works?type=4">企业/品牌设计</a></div>
+        <div class="classify-text" style="margin-top: 30px;"><a class="classify-text" href="/works">全部</a></div>
+    </div>
 </div>
 <div class="works-list">
     <!--<div><div class="img-wrapper"><div class="img-data" img-data="http://zhuyan.me/img/example/1.jpg"/></div></div></div>-->
@@ -48,6 +67,21 @@
         var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)", "i");
         var r = window.location.search.substr(1).match(reg);
         if (r != null) return unescape(r[2]); return null;
+    }
+
+    function drawSwitch()
+    {
+        if( $('#switch_img').attr('data-type') == 1)
+        {
+            $('#draw_list').hide();
+            $('#switch_img').attr('data-type',0);
+            $('#switch_img').attr('src','/public/images/icon_add_nor@3x.png');
+        } else
+        {
+            $('#draw_list').show();
+            $('#switch_img').attr('data-type',1);
+            $('#switch_img').attr('src','/public/images/home_icon_off@3x.png');
+        }
     }
 
 

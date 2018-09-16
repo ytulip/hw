@@ -23,6 +23,7 @@
     letter-spacing: 0;
     line-height: 30px;
 }
+.classify-text:hover{color: #383838;}
 .copyright-text{
     font-family: PingFangSC-Regular;
     font-size: 12px;
@@ -47,6 +48,15 @@
     padding-bottom: calc( 100% * 0.624 );
     position: relative;
 }
+
+.contact-dribble{margin-left: 42px;}
+.contact-instagram{margin-left: 42px;}
+
+.contact-weibo:hover{color:#fc1414;}
+.contact-dribble:hover{color:#f04387;}
+.contact-instagram:hover{color:#BC41B5;}
+
+.menu-m-panel{display: none;}
 
 
 .response-free-width1{
@@ -125,6 +135,7 @@
 
 .drawer-height{height: 24px;}
 .logo-height{height: 26px;}
+.t-al-r{text-align: right;}
 
 @media only screen and (max-width: 1200px) {
     .sandbox-content,.sandbox-header {
@@ -193,6 +204,18 @@
         color: #000000;
         letter-spacing: 0.16px;
         line-height: 34.27px;}
+
+    .works-menu{display: none;}
+    .menu-m-panel{display: block;}
+
+    .title-text{font-family: Arial;font-size: 24px;
+        color: #000000;
+        letter-spacing: 0;
+        line-height: 78px;}
+
+    .contact-item{width: 100% !important;margin-top: 30px;}
+    .contact-dribble{margin-left: 0;}
+    .contact-instagram{margin-left: 0;}
 }
 
 
@@ -269,6 +292,7 @@ h3{
 .in-bl-line{font-size: 0}
 .in-bl-line-item{font-size: 14px;display: inline-block;}
 .v-a-t{vertical-align: top;}
+.v-a-m{vertical-align: middle;}
 .fl-r{float: right;}
 
 
@@ -280,9 +304,6 @@ h3{
 .menu-item3:hover{color:#fef200;}
 
 /*contact us*/
-.contact-weibo:hover{color:#fc1414;}
-.contact-dribble:hover{color:#f04387;}
-.contact-instagram:hover{color:#BC41B5;}
 
 .opr-line{border-top:1px solid #efefef;border-bottom: 1px solid #e8e8e8;}
 .opr-line a{display: inline-block;line-height: 50px;font-family: PingFangSC-Regular;

@@ -244,7 +244,8 @@ class IndexController{
      */
     public function works(){
         return View::show('index/works.html',array(
-            'type'=>IndexController::input('type',1)
+            'type'=>IndexController::input('type',1),
+            'typeText'=>\MM\Kits::typeText(IndexController::input('type',1))
         ));
     }
 
