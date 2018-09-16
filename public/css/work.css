@@ -123,6 +123,7 @@
     letter-spacing: 0;margin-bottom: 30px;}
 
 .menu-text{font-size: 60px;}
+.home-margin{margin-top: 127px;}
 
 
 .easy-l .response-free-width2:nth-child(1)
@@ -220,6 +221,7 @@
     .contact-item{width: 100% !important;margin-top: 30px;}
     .contact-dribble{margin-left: 0;}
     .contact-instagram{margin-left: 0;}
+    .home-margin{margin-top: 30px;}
 }
 
 
