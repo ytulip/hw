@@ -150,7 +150,7 @@
             if($(this).find('.work-item-shade').length){
                 return;
             }else{
-                $(this).append('<div class="work-item-shade" style="position:absolute;top:0;right:0;bottom:0;left:0;z-index:99;background-color:#000000;opacity: .6;"><div class="shadow-title">'+$(this).attr('data-title')+'</div><div class="shadow-desc">'+$(this).attr('data-abstract')+'</div></div>');
+                $(this).append('<div class="work-item-shade" style="position:absolute;top:0;right:0;bottom:0;left:0;z-index:99;background-color:rgba(0,0,0,.6)"><div class="shadow-title">'+$(this).attr('data-title')+'</div><div class="shadow-desc">'+$(this).attr('data-abstract')+'</div></div>');
                 return;
             }
         });
