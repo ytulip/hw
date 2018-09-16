@@ -95,6 +95,7 @@
 }
 
 .body-padding{padding-top: 120px;}
+.padding-60-30{padding-top: 60px;}
 
 .img-wrapper{
     position: absolute;
@@ -227,6 +228,7 @@
     .home-margin{margin-top: 30px;margin-bottom: 30px;}
 
     .body-padding{padding-top: 49px;}
+    .padding-60-30{padding-top: 30px;}
 }
 
 
