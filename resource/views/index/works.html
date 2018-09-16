@@ -21,8 +21,8 @@
 {% block pageTitle %}<div style="text-align: center;"><span style="line-height: 34px;font-size: 26px;font-family: FZLTXHB--B51-0;color: #333333;">WORKS</span></div>{% endblock %}
 {% block body %}
 <div class="common-padding" style="margin-bottom: 100px;">
-    <div class="title-text ">OUR WORK</div>
-<div class="works-menu">
+    <div class="title-text" style="margin-top: 60px;">OUR WORK</div>
+<div class="works-menu" style="margin-top: 30px;">
     <ul class="works-type-new">
         <li><a href="works" class="classify-text">全部</a></li>
         <li><a href="/works?type=2" class="classify-text">产品设计</a></li>
@@ -47,7 +47,7 @@
         <div class="classify-text" style="margin-top: 30px;"><a class="classify-text" href="/works">全部</a></div>
     </div>
 </div>
-<div class="works-list" style="margin-left:-15px;margin-right: -15px; ">
+<div class="works-list" style="margin-left:-15px;margin-right: -15px;margin-top: 30px; ">
     <!--<div><div class="img-wrapper"><div class="img-data" img-data="http://zhuyan.me/img/example/1.jpg"/></div></div></div>-->
     <!--<div><div class="img-wrapper"><div class="img-data" img-data="http://zhuyan.me/img/example/2.jpg"/></div></div></div>-->
     <!--<div><div class="img-wrapper"><div class="img-data" img-data="http://zhuyan.me/img/example/3.jpg"/></div></div></div>-->
@@ -177,7 +177,7 @@
 //
 //        $(".img-wrapper").imgLiquid();
 
-        $('body').on('mouseover','.img-wrapper',function(){
+        $('body').on('mouseover','.img-show-panel',function(){
             if($(this).find('.work-item-shade').length){
                 return;
             }else{
@@ -187,7 +187,7 @@
         });
 
 
-        $('body').on('mouseleave','.img-wrapper',function(){
+        $('body').on('mouseleave','.img-show-panel',function(){
 //            console.log(4);
             $(this).find('.work-item-shade').remove();
         });
