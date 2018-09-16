@@ -172,7 +172,7 @@
          </div>`;*/
         $('body').append(innerHtml);
         closeMenu = false;
-        $('.veil').addClass('animated bounceInUp');
+        $('.veil').addClass('animated fadeIn');
         $('.veil').one('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend', function(){
             if(closeMenu){
                 $('.veil').remove();
