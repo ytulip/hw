@@ -136,7 +136,7 @@ class IndexController{
             $imgsType[] = strpos($img,'/server/upload')?0:1;
             if( $texts[$key] != '')
             {
-                $items[] = ['type'=>2,'content'=>$texts[$key],'width_type'=>2];
+                $items[] = ['type'=>2,'content'=>$texts[$key],'width_type'=>2,''];
             }
             $items[] = ['type'=>1,'content'=>$img,'width_type'=>$widthTypes[$key]];
         }
