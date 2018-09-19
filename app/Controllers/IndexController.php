@@ -143,7 +143,7 @@ class IndexController{
 
         $lineItems = [];
         $itemTmp = [];
-//        var_dump($items);
+
         foreach ( $items as $key=>$item)
         {
             if( $item['width_type'] == 1)
@@ -175,11 +175,8 @@ class IndexController{
                 $lineItems[] = $itemTmp;
                 $itemTmp = [];
                 $itemTmp[] = $item;
+                continue;
             }
-
-            $lineItems[] = $itemTmp;
-            $itemTmp = [];
-            continue;
         }
 
 

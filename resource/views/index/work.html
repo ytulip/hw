@@ -141,7 +141,7 @@
 
     {% for line in lineItems %}
         <div class="in-bl-line easy-l">
-            {% for item in line %}
+            {% for key,item in line %}
                 {% if item['type'] == 1 %}
                     <div class="in-bl-line-item response-free-width{{item['width_type']}} v-a-t">
                         <div class="img-show-panel">
@@ -152,7 +152,7 @@
 
                 {% if item['type'] == 2 %}
                     <div class="in-bl-line-item response-free-width{{item['width_type']}} v-a-t">
-                        <p class="font-p p-t-30-0">{{ item['content'] | nl2br }}</p>
+                        <p class="font-p p-t-30-0 {% if key == 0 %} p-r-30-0 {% endif %} {% if key == 1 %} p-l-30-0 {% endif %}">{{ item['content'] | nl2br }}</p>
                     </div>
                 {% endif %}
             {% endfor %}

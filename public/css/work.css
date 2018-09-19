@@ -164,6 +164,8 @@
 .t-al-r{text-align: right;}
 
 .p-t-30-0{padding-top: 30px;}
+.p-r-30-0{padding-right: 30px;}
+.p-l-30-0{padding-left: 30px;}
 
 @media only screen and (max-width: 1200px) {
     .sandbox-content,.sandbox-header {
@@ -267,6 +269,8 @@
     .only-m{display: block;}
     .only-p{display: none;}
     .p-t-30-0{padding-top: 0;}
+    .p-r-30-0{padding-right: 0;}
+    .p-l-30-0{padding-left: 0;}
 }
 
 
