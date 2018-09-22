@@ -20,11 +20,11 @@
         -webkit-animation:title-animate-move .5s ease; /* Safari 和 Chrome */
     }
 
-    .shade-opacity-animate
-    {
-        animation:shade-opacity-animate-move .5s ease;
-        -webkit-animation:shade-opacity-animate-move .5s ease; /* Safari 和 Chrome */
-    }
+    /*.shade-opacity-animate*/
+    /*{*/
+        /*animation:shade-opacity-animate-move .5s ease;*/
+        /*-webkit-animation:shade-opacity-animate-move .5s ease; !* Safari 和 Chrome *!*/
+    /*}*/
 
     @-webkit-keyframes title-animate-move {
         0%{transform:translateY(100%);}
@@ -210,7 +210,7 @@
             if($(this).find('.work-item-shade').length){
                 return;
             }else{
-                $(this).append('<div onclick="goHref(\'/work?id='+$(this).attr('data-id')+'\')" class="work-item-shade fadeIn shade-opacity-animate" style="position:absolute;top:0;right:0;bottom:0;left:0;z-index:99;background-color: rgba(0,0,0,.6);"><div class="shadow-title title-animate">'+$(this).attr('data-title')+'</div><div class="shadow-desc">'+$(this).attr('data-abstract')+'</div></div>');
+                $(this).append('<div onclick="goHref(\'/work?id='+$(this).attr('data-id')+'\')" class="work-item-shade fadeIn shade-opacity-animate" style="position:absolute;top:0;right:0;bottom:0;left:0;z-index:99;background-color: rgba(0,0,0,.6);opacity .5s ease-in-out, transform .5s ease-in-out;"><div class="shadow-title title-animate">'+$(this).attr('data-title')+'</div><div class="shadow-desc">'+$(this).attr('data-abstract')+'</div></div>');
                 return;
             }
         });
