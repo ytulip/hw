@@ -197,7 +197,7 @@ class IndexController{
         }
 
 
-        return View::show('index/work.html',array(
+        return View::show('index/new_work.html',array(
             'type'=>$object->type,
             'title'=>$object->title,
             'abstract'=>$object->abstract,
