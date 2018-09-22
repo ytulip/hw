@@ -22,8 +22,8 @@
 
     .shade-opacity-animate
     {
-        animation:shade-opacity-animate-move .5s ease;
-        -webkit-animation:shade-opacity-animate-move .5s ease; /* Safari 和 Chrome */
+        animation:shade-opacity-animate-move 2s ease;
+        -webkit-animation:shade-opacity-animate-move 2s ease; /* Safari 和 Chrome */
     }
 
     @-webkit-keyframes title-animate-move {
@@ -32,10 +32,10 @@
     }
 
     @-webkit-keyframes shade-opacity-animate-move {
+        0%{background-color:rgba(0,0,0,0);}
         0%{background-color:rgba(0,0,0,.1);}
-        0%{background-color:rgba(0,0,0,.2);}
-        25%{background-color:rgba(0,0,0,.3);}
-        40%{background-color:rgba(0,0,0,.35);}
+        25%{background-color:rgba(0,0,0,.2);}
+        40%{background-color:rgba(0,0,0,.3);}
         50%{background-color:rgba(0,0,0,.4);}
         75%{background-color:rgba(0,0,0,.5);}
         100%{background-color:rgba(0,0,0,.6);}
