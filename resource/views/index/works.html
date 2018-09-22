@@ -22,8 +22,8 @@
 
     .shade-opacity-animate
     {
-        animation:shade-opacity-animate-move 2s ease;
-        -webkit-animation:shade-opacity-animate-move 2s ease; /* Safari 和 Chrome */
+        animation:shade-opacity-animate-move .5s ease;
+        -webkit-animation:shade-opacity-animate-move .5s ease; /* Safari 和 Chrome */
     }
 
     @-webkit-keyframes title-animate-move {
@@ -32,12 +32,16 @@
     }
 
     @-webkit-keyframes shade-opacity-animate-move {
-        0%{background-color:rgba(0,0,0,0);}
-        0%{background-color:rgba(0,0,0,.1);}
-        25%{background-color:rgba(0,0,0,.2);}
-        40%{background-color:rgba(0,0,0,.3);}
-        50%{background-color:rgba(0,0,0,.4);}
-        75%{background-color:rgba(0,0,0,.5);}
+        0%{background-color:rgba(0,0,0,.2);}
+        10%{background-color:rgba(0,0,0,.24);}
+        20%{background-color:rgba(0,0,0,.28);}
+        30%{background-color:rgba(0,0,0,.32);}
+        40%{background-color:rgba(0,0,0,.36);}
+        50%{background-color:rgba(0,0,0,.40);}
+        60%{background-color:rgba(0,0,0,.44);}
+        70%{background-color:rgba(0,0,0,.48);}
+        80%{background-color:rgba(0,0,0,.52);}
+        90%{background-color:rgba(0,0,0,.56);}
         100%{background-color:rgba(0,0,0,.6);}
     }
 
@@ -206,7 +210,7 @@
             if($(this).find('.work-item-shade').length){
                 return;
             }else{
-                $(this).append('<div onclick="goHref(\'/work?id='+$(this).attr('data-id')+'\')" class="work-item-shade fadeIn shade-opacity-animate" style="position:absolute;top:0;right:0;bottom:0;left:0;z-index:99;background-color:rgba(0,0,0,.6);"><div class="shadow-title title-animate">'+$(this).attr('data-title')+'</div><div class="shadow-desc">'+$(this).attr('data-abstract')+'</div></div>');
+                $(this).append('<div onclick="goHref(\'/work?id='+$(this).attr('data-id')+'\')" class="work-item-shade fadeIn shade-opacity-animate" style="position:absolute;top:0;right:0;bottom:0;left:0;z-index:99;background-color: rgba(0,0,0,.6);"><div class="shadow-title title-animate">'+$(this).attr('data-title')+'</div><div class="shadow-desc">'+$(this).attr('data-abstract')+'</div></div>');
                 return;
             }
         });
