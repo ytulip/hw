@@ -99,6 +99,8 @@
         font-size: 24px;
     }
 
+    /*.body-padding{padding-top: 0;}*/
+
 </style>
 {% endblock %}
 {% block pageTitle %}<div style="text-align: center;"><span style="line-height: 34px;font-size: 26px;font-family: FZLTXHB--B51-0;color: #333333;"></span></div>{% endblock %}
@@ -114,9 +116,9 @@
     <!--<div class="only-p" style="height: 600px;">-->
     <!--<div style="height: 600px;background-image: url( {{ banner_img }} );background-size:auto 600px;background-repeat: no-repeat;    background-position: center center;position: fixed;top:122px;left: 0;right: 0;z-index:-1;"></div>-->
     <!--</div>-->
-    <div class="only-p" style="position: fixed;top:122px;left: 0;right: 0;z-index:-1;">
+    <div class="only-p" style="position: fixed;left: 0;right: 0;top:0;z-index:-1;">
         <div class="img-show-panel" style="position: absolute;width: 100%;padding-bottom: calc( 100% * 0.79 );">
-            <div style="position: absolute;left: 0;right: 0;bottom: 0;top:calc( 100% * 0.79 * 0.45);background-color: #ffffff;"></div>
+            <!--<div style="position: absolute;left: 0;right: 0;bottom: 0;top:calc( 100% * 0.79 * 0.45);background-color: #ffffff;"></div>-->
             <img src="{{ banner_img }}"/>
         </div>
     </div>
@@ -193,6 +195,34 @@
 
 
     /*加载works*/
+//    $(window).scroll(function(){
+//        var heightTop = document.documentElement.scrollTop || document.body.scrollTop;
+//        console.log(heightTop);
+//    })
+
+    $(document).ready(function(){
+        var fixNav = function() {
+            var Height = $(".header-wrapper").outerHeight(true);
+//            console.log('header-wrapper'  + Height);
+//            console.log($('.header-wrapper').height());
+//            var Height = $(".header-wrapper").offset().top;
+//            console.log('header-wrapper'  + Height);
+            var top = $(window).scrollTop();
+//            console.log('toTop'  + top);
+            if(top > Height){
+                $(".header-wrapper").hide();
+            }
+//                $(".left").css({"position":"fixed","top":"0"});
+        else{
+                $(".header-wrapper").show();
+            }
+//                $(".left").css({"position":"relative","top":"0"});
+            }
+
+        $(window).scroll(function(){
+            fixNav();
+        })
+    });
 
 
 
