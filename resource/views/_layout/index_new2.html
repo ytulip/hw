@@ -264,11 +264,11 @@
 
     function autoHideHeader(){
         currentTop = window.pageYOffset;
-        if( (previousTop - currentTop) > 10 )
+        if( (previousTop - currentTop) > 20 )
         {
             console.log('上滑动');
             Show();
-        } else if( (previousTop - currentTop) < -10 ){
+        } else if( (previousTop - currentTop) < -20 ){
             console.log('下滑动');
             Hide();
         } else {
