@@ -70,6 +70,30 @@
         .padding-lr-15-0{padding-left: 0;padding-right: 0;}
     }
 
+    .classify-rotate
+    {
+        transform:rotate(45deg);
+        transition: all 0.2s ease;
+    }
+
+    .classify-rotate-normal
+    {
+        transform:rotate(0deg);
+        transition: all 0.2s ease;
+    }
+
+    #draw_list.is-visible{
+        display: block;
+    }
+
+    #draw_list.draw_list_m{
+        position: absolute;
+        z-index: 999;
+        background: #ffffff;
+        left:0;
+        right: 0;
+    }
+
 </style>
 {% endblock %}
 {% block pageTitle %}<div style="text-align: center;"><span style="line-height: 34px;font-size: 26px;font-family: FZLTXHB--B51-0;color: #333333;">WORKS</span></div>{% endblock %}
@@ -85,7 +109,7 @@
     </ul>
 </div>
 
-<div class="menu-m-panel" style="margin-bottom: 30px;">
+<div class="menu-m-panel" style="margin-bottom: 30px;position: relative;">
     <div class="in-bl-line">
         <div class="in-bl-line-item v-a-m" style="width: 50%"><div class="classify-text">{{ typeText }}</div></div>
         <div class="in-bl-line-item t-al-r v-a-m" style="width: 50%">
@@ -94,7 +118,7 @@
     </div>
     <div style="border-bottom: 1px solid #000000;margin-top: 16px;"></div>
 
-    <div id="draw_list">
+    <div id="draw_list" class="draw_list_m">
         <div class="classify-text" style="margin-top: 30px;"><a class="classify-text" href="/works?type=2">产品设计</a></div>
         <div class="classify-text" style="margin-top: 30px;"><a class="classify-text" href="/works?type=3">交互与视觉设计</a></div>
         <div class="classify-text" style="margin-top: 30px;"><a class="classify-text" href="/works?type=4">企业/品牌设计</a></div>
@@ -127,14 +151,27 @@
     {
         if( $('#switch_img').attr('data-type') == 1)
         {
-            $('#draw_list').hide();
+//            $('#draw_list').hide();
+            $('.draw_list_m').removeClass('animated fadeIn');
+            $('.draw_list_m').addClass('animated fadeOut');
+
             $('#switch_img').attr('data-type',0);
-            $('#switch_img').attr('src','/public/images/icon_add_nor@3x.png');
+            $('#switch_img').removeClass('classify-rotate');
+            $('#switch_img').addClass('classify-rotate-normal');
+//            $('#switch_img').attr('src','/public/images/icon_add_nor@3x.png');
         } else
         {
-            $('#draw_list').show();
+//            $('#draw_list').show();
+//            $('#draw_list').addClass('is-visible animated fadeInDown');
+            $('.draw_list_m').removeClass('animated fadeOut');
+            $('.draw_list_m').addClass('is-visible animated fadeIn');
+
+
+
             $('#switch_img').attr('data-type',1);
-            $('#switch_img').attr('src','/public/images/home_icon_off@3x.png');
+            $('#switch_img').removeClass('classify-rotate-normal');
+            $('#switch_img').addClass('classify-rotate');
+//            $('#switch_img').attr('src','/public/images/home_icon_off@3x.png');
         }
     }
 
