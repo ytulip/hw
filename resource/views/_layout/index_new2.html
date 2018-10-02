@@ -264,6 +264,13 @@
 
     function autoHideHeader(){
         currentTop = window.pageYOffset;
+
+
+        if(currentTop = 0)
+        {
+            console.log('顶部');
+            Show();
+        }
         if( (previousTop - currentTop) > 20 )
         {
             console.log('上滑动');
