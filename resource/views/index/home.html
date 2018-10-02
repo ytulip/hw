@@ -14,6 +14,17 @@
 
 
     .works-type li:nth-child({{ type }}) a{  color:#FFD48B;  }
+
+    @media only screen and (max-width: 768px) {
+        .work-space {
+            padding: 0;
+        }
+        .work-list-style{margin-left:0;margin-right: 0;margin-top: 0;}
+        .work-desc-panel h1{
+            margin-top: 15px;
+        }
+        .padding-lr-15-0{padding-left: 0;padding-right: 0;}
+    }
 </style>
 {% endblock %}
 {% block pageTitle %}<div style="text-align: center;"></div>{% endblock %}
@@ -28,7 +39,7 @@
 
 
 <div class="common-padding">
-    <div class="works-list">
+    <div class="works-list work-list-style">
         <!--<div><div class="img-wrapper"><div class="img-data" img-data="http://zhuyan.me/img/example/1.jpg"/></div></div></div>-->
         <!--<div><div class="img-wrapper"><div class="img-data" img-data="http://zhuyan.me/img/example/2.jpg"/></div></div></div>-->
         <!--<div><div class="img-wrapper"><div class="img-data" img-data="http://zhuyan.me/img/example/3.jpg"/></div></div></div>-->
@@ -40,7 +51,7 @@
     </div>
 
     <div class="opr-line easy-l" style="margin-bottom: 100px;">
-        <a href="/works">更多</a>
+        <a href="/works" class="a-hover">更多</a>
     </div>
 </div>
 {% endblock %}
@@ -91,9 +102,14 @@
                 if(data.status){
                     var listItem = '';
                     console.log(data.data);
+
+
                     $.each(data.data,function(key,val){
-                        listItem += '<div class="response-width'+val.width_type+'"><div class="img-wrapper" data-title="'+val.title+'" data-abstract="'+val.abstract+'" data-id='+val.id+'><a href="/work?id='+val.id+'"><img class="work-item" img-data="'+val.face_img+'" src="'+val.face_img+'"/></a></div></div></div><div class="work-desc-panel"><h1>'+val.title+'</h1><p>'+val.abstract+'</p></div>';
+                        listItem += '<div class="response-free-width'+val.width_type+' work-space" onclick="goHref(\'/work?id='+val.id+'\')"><div class="img-show-panel" data-title="'+val.title+'" data-abstract="'+val.abstract+'" data-id='+val.id+'><a href="/work?id='+val.id+'"><img class="work-item" img-data="'+val.face_img+'" src="'+val.face_img+'"/></a></div></div></div><div class="work-desc-panel " onclick="goHref(\'/work?id='+val.id+'\')" class="padding-lr-15-0"><h1>'+val.title+'</h1><p>'+val.abstract+'</p></div>';
                     });
+//                    $.each(data.data,function(key,val){
+//                        listItem += '<div class="response-width'+val.width_type+'"><div class="img-wrapper" data-title="'+val.title+'" data-abstract="'+val.abstract+'" data-id='+val.id+'><a href="/work?id='+val.id+'"><img class="work-item" img-data="'+val.face_img+'" src="'+val.face_img+'"/></a></div></div></div><div class="work-desc-panel"><h1>'+val.title+'</h1><p>'+val.abstract+'</p></div>';
+//                    });
 //                    for(var item  in data.data){
 //                        console.log(item);
 //                        listItem += '<div><div class="img-wrapper"><div class="img-data" img-data="'+item.face_img+'"/></div></div></div>';
@@ -121,6 +137,7 @@
 //                    });
 
                     $(".img-wrapper").imgLiquid();
+                    $(".img-show-panel").imgLiquid();
 //                    var afterHtml = '';
 //                    var imgArr = data.data.imgs.split(',');
 //                    console.log(imgArr);
@@ -146,20 +163,33 @@
 //
 //        $(".img-wrapper").imgLiquid();
 
-        $('body').on('mouseover','.img-wrapper',function(){
+//        $('body').on('mouseover','.img-wrapper',function(){
+//            if($(this).find('.work-item-shade').length){
+//                return;
+//            }else{
+//                $(this).append('<div class="work-item-shade" onclick="goHref(\'/work?id='+$(this).attr('data-id')+'\')" style="position:absolute;top:0;right:0;bottom:0;left:0;z-index:99;background-color:rgba(0,0,0,.6)"><div class="shadow-title">'+$(this).attr('data-title')+'</div><div class="shadow-desc">'+$(this).attr('data-abstract')+'</div></div>');
+//                return;
+//            }
+//        });
+
+        $('body').on('mouseover','.img-show-panel',function(){
             if($(this).find('.work-item-shade').length){
                 return;
             }else{
-                $(this).append('<div class="work-item-shade" onclick="goHref(\'/work?id='+$(this).attr('data-id')+'\')" style="position:absolute;top:0;right:0;bottom:0;left:0;z-index:99;background-color:rgba(0,0,0,.6)"><div class="shadow-title">'+$(this).attr('data-title')+'</div><div class="shadow-desc">'+$(this).attr('data-abstract')+'</div></div>');
+                $(this).append('<div onclick="goHref(\'/work?id='+$(this).attr('data-id')+'\')" class="work-item-shade" style="position:absolute;top:0;right:0;bottom:0;left:0;z-index:99;background-color: rgba(0,0,0,.6);opacity .5s ease-in-out, transform .5s ease-in-out;"><div class="shadow-title title-animate">'+$(this).attr('data-title')+'</div><div class="shadow-desc">'+$(this).attr('data-abstract')+'</div></div>');
                 return;
             }
         });
 
-
-        $('body').on('mouseleave','.img-wrapper',function(){
+        $('body').on('mouseleave','.img-show-panel',function(){
 //            console.log(4);
             $(this).find('.work-item-shade').remove();
         });
+
+//        $('body').on('mouseleave','.img-wrapper',function(){
+////            console.log(4);
+//            $(this).find('.work-item-shade').remove();
+//        });
 
         refreshWork();
     });

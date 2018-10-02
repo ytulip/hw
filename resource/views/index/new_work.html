@@ -186,11 +186,20 @@
         background-position: center center
     }
 
+    .loading-bar{
+        position: absolute;
+        left:0;
+        right: 0;
+        top:0;
+        border-bottom: 4px solid #000000;
+    }
+
 </style>
 {% endblock %}
 {% block pageTitle %}<div style="text-align: center;"><span style="line-height: 34px;font-size: 26px;font-family: FZLTXHB--B51-0;color: #333333;"></span></div>{% endblock %}
 {% block body %}
-<!--<div id="white-overlay" class="visible">-->
+<!--<div id="white-overlay" class="visible" style="z-index: 10000">-->
+    <!--<div class="loading-bar"></div>-->
     <!--<p id="white-overlay-title">GOAT</p>-->
 <!--</div>-->
 <div class="m-padding only-p">
@@ -256,10 +265,10 @@
 
     <div class="opr-line easy-l ov-hid" style="margin-bottom: 100px;">
         {% if prev %}
-        <a href="/work?id={{ prev }}">上一项目</a>
+        <a href="/work?id={{ prev }}" class="a-hover">上一项目</a>
         {% endif %}
         {% if next %}
-        <a style="float: right;" href="/work?id={{ next }}">下一项目</a>
+        <a style="float: right;" href="/work?id={{ next }}" class="a-hover">下一项目</a>
         {% endif %}
     </div>
 </div>
