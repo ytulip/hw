@@ -272,15 +272,15 @@
             alert('惯性拖拽');
         }
 
-        if(currentTop == 0)
+        currentTop = ( currentTop <= ($(document).height() - $(window).height()) )?currentTop:($(document).height() - $(window).height());
+
+        if(currentTop > ($(document).height() - $(window).height()))
         {
-            console.log('顶部');
-            Show();
-        }else if (currentTop == ($(document).height() - $(window).height())  ){
-            console.log('底部');
-            Hide();
+            alert('惯性拖拽2');
         }
-        else if( (previousTop - currentTop) > 0 )
+
+
+        if( (previousTop - currentTop) > 0 )
         {
             console.log('上滑动');
             Show();
