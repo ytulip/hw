@@ -1,4 +1,4 @@
-{% extends "_layout/index_new.html" %}
+{% extends "_layout/index_new2.html" %}
 {% block style%}
 <style>
     /*.veil ul li:nth-child(3) a{*/
@@ -26,6 +26,13 @@
         /*-webkit-animation:shade-opacity-animate-move .5s ease; !* Safari 和 Chrome *!*/
     /*}*/
 
+    .work-list-style{
+        margin-left:-15px;margin-right: -15px;margin-top: 30px;
+    }
+
+
+    .padding-lr-15-0{padding-left: 15px;padding-right: 15px;}
+
     @-webkit-keyframes title-animate-move {
         0%{transform:translateY(100%);}
         100%{transform:translateY(0%);}
@@ -45,11 +52,29 @@
         100%{background-color:rgba(0,0,0,.6);}
     }
 
+    @media only screen and (min-width: 1200px) {
+        .sandbox-content {
+            padding-left: 145px;
+            padding-right: 145px;
+        }
+    }
+
+    @media only screen and (max-width: 768px) {
+        .work-space {
+            padding: 0;
+        }
+        .work-list-style{margin-left:0;margin-right: 0;margin-top: 0;}
+        .work-desc-panel h1{
+            margin-top: 15px;
+        }
+        .padding-lr-15-0{padding-left: 0;padding-right: 0;}
+    }
+
 </style>
 {% endblock %}
 {% block pageTitle %}<div style="text-align: center;"><span style="line-height: 34px;font-size: 26px;font-family: FZLTXHB--B51-0;color: #333333;">WORKS</span></div>{% endblock %}
 {% block body %}
-<div class="common-padding" style="margin-bottom: 100px;">
+<div class="common-padding padding-top-122-49" style="margin-bottom: 100px;">
     <div class="title-text padding-60-30">OUR WORK</div>
 <div class="works-menu" style="margin-top: 30px;">
     <ul class="works-type-new">
@@ -76,7 +101,7 @@
         <div class="classify-text" style="margin-top: 30px;"><a class="classify-text" href="/works">全部</a></div>
     </div>
 </div>
-<div class="works-list" style="margin-left:-15px;margin-right: -15px;margin-top: 30px; ">
+<div class="works-list work-list-style">
     <!--<div><div class="img-wrapper"><div class="img-data" img-data="http://zhuyan.me/img/example/1.jpg"/></div></div></div>-->
     <!--<div><div class="img-wrapper"><div class="img-data" img-data="http://zhuyan.me/img/example/2.jpg"/></div></div></div>-->
     <!--<div><div class="img-wrapper"><div class="img-data" img-data="http://zhuyan.me/img/example/3.jpg"/></div></div></div>-->
@@ -151,7 +176,7 @@
                     var listItem = '';
                     console.log(data.data);
                     $.each(data.data,function(key,val){
-                        listItem += '<div class="response-free-width'+val.width_type+' work-space" onclick="goHref(\'/work?id='+val.id+'\')"><div class="img-show-panel" data-title="'+val.title+'" data-abstract="'+val.abstract+'" data-id='+val.id+'><a href="/work?id='+val.id+'"><img class="work-item" img-data="'+val.face_img+'" src="'+val.face_img+'"/></a></div></div></div><div class="work-desc-panel " onclick="goHref(\'/work?id='+val.id+'\')" style="padding-left: 15px;padding-right: 15px;"><h1>'+val.title+'</h1><p>'+val.abstract+'</p></div>';
+                        listItem += '<div class="response-free-width'+val.width_type+' work-space" onclick="goHref(\'/work?id='+val.id+'\')"><div class="img-show-panel" data-title="'+val.title+'" data-abstract="'+val.abstract+'" data-id='+val.id+'><a href="/work?id='+val.id+'"><img class="work-item" img-data="'+val.face_img+'" src="'+val.face_img+'"/></a></div></div></div><div class="work-desc-panel " onclick="goHref(\'/work?id='+val.id+'\')" class="padding-lr-15-0"><h1>'+val.title+'</h1><p>'+val.abstract+'</p></div>';
                     });
 //                    for(var item  in data.data){
 //                        console.log(item);

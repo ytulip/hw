@@ -1,4 +1,4 @@
-{% extends "_layout/index_new.html" %}
+{% extends "_layout/index_new2.html" %}
 {% block style%}
 <style>
 
@@ -99,17 +99,6 @@
         font-size: 24px;
     }
 
-
-    .no-visible{
-        transition: all 0.5s ease-in-out 0s;
-        -webkit-transform: translateY(-100%);
-    }
-
-    .do-visible{
-        transition: all 0.5s ease-in-out 0s;
-        -webkit-transform: translateY(0%);
-    }
-
     /*.body-padding{padding-top: 0;}*/
 
     .img-show-panel {
@@ -119,13 +108,93 @@
         position: relative;
     }
 
+
+    div#white-overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        width: 100%;
+        height: 100%;
+        z-index: 50;
+        background-color: #fff;
+        visibility: hidden;
+        opacity: 0;
+        display: -ms-flexbox;
+        display: flex;
+        -ms-flex-pack: center;
+        justify-content: center;
+        -ms-flex-align: center;
+        align-items: center;
+        transition: all 1.5s ease 0s
+    }
+
+    div#white-overlay.visible {
+        visibility: visible;
+        opacity: 1;
+        transition: all 1.5s ease 0s
+    }
+
+    p#white-overlay-title {
+        color: #2a2a2a;
+        font-family: TheinhardtLight;
+        font-size: 6.5vw;
+        width: 100%;
+        margin: 0;
+        text-align: center;
+        line-height: 1
+    }
+
+    div#white-home-overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: 500;
+        background-color: #fff;
+        visibility: hidden;
+        opacity: 0;
+        display: -ms-flexbox;
+        display: flex;
+        -ms-flex-pack: center;
+        justify-content: center;
+        -ms-flex-align: center;
+        align-items: center;
+        -o-transition: 1.5s;
+        -ms-transition: 1.5s;
+        -moz-transition: 1.5s;
+        -webkit-transition: 1.5s
+    }
+
+    div#white-home-overlay.visible {
+        visibility: visible;
+        opacity: 1;
+        -o-transition: 1.5s;
+        -ms-transition: 1.5s;
+        -moz-transition: 1.5s;
+        -webkit-transition: 1.5s
+    }
+
+    div#white-home-overlay-title {
+        width: 300px;
+        height: 164.4px;
+        background-image: url(../images/svgs/logo-large-black.svg);
+        background-size: contain;
+        background-repeat: no-repeat;
+        background-position: center center
+    }
+
 </style>
 {% endblock %}
 {% block pageTitle %}<div style="text-align: center;"><span style="line-height: 34px;font-size: 26px;font-family: FZLTXHB--B51-0;color: #333333;"></span></div>{% endblock %}
 {% block body %}
-
-<div class="m-padding">
-    <img class="only-m" src="{{ banner_img }}" style="width: 100%;"/>
+<!--<div id="white-overlay" class="visible">-->
+    <!--<p id="white-overlay-title">GOAT</p>-->
+<!--</div>-->
+<div class="m-padding only-p">
+    <!--<img class="only-m" src="{{ banner_img }}" style="width: 100%;"/>-->
 
     <!--<div class="only-p" style="height: 600px;background-image: url( {{ banner_img }} );background-size:auto 600px;background-repeat: no-repeat;    background-position: center center;">-->
     <!--<div class="only-p" style="height: 600px;">-->
@@ -134,7 +203,7 @@
     <!--<div class="only-p" style="height: 600px;">-->
     <!--<div style="height: 600px;background-image: url( {{ banner_img }} );background-size:auto 600px;background-repeat: no-repeat;    background-position: center center;position: fixed;top:122px;left: 0;right: 0;z-index:-1;"></div>-->
     <!--</div>-->
-    <div class="only-p" style="position: fixed;left: 0;right: 0;top:0;z-index:-1;">
+    <div style="position: fixed;left: 0;right: 0;top:0;z-index:-1;">
         <div class="img-show-panel2" style="position: absolute;width: 100%;padding-bottom: calc( 100% * 0.42 );">
             <!--<div style="position: absolute;left: 0;right: 0;bottom: 0;top:calc( 100% * 0.79 * 0.45);background-color: #ffffff;"></div>-->
             <img src="{{ banner_img }}"/>
@@ -145,6 +214,10 @@
 
 <div class="only-p" style="padding-bottom: calc( 100% * 0.42);">
 
+</div>
+
+<div class="only-m common-padding padding-top-122-49">
+    <img src="{{ banner_img }}" style="width: 100%;margin-top: 16px;"/>
 </div>
 
 <div class="common-padding padding-60-30" style="background-color: #ffffff;">
@@ -228,6 +301,7 @@
             var top = $(window).scrollTop();
 //            console.log('toTop'  + top);
             if(top > Height){
+                return;
                 if($('.header-wrapper').attr('is-hide') == 1){
                     return;
                 }
@@ -236,6 +310,7 @@
                 $('.header-wrapper').addClass('no-visible');
 //                $(".header-wrapper").hide();
             }else{
+                return;
                 if( $('.header-wrapper').attr('is-hide') == 2 )
                 {
                     return;
