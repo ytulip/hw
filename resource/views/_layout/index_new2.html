@@ -265,7 +265,7 @@
     function autoHideHeader(){
         currentTop = window.pageYOffset;
 
-        currentTop = currentTop?currentTop:0;
+        currentTop = (currentTop > 0)?currentTop:0;
 
         if(currentTop < 0)
         {
