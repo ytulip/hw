@@ -280,11 +280,11 @@
             console.log('底部');
             Hide();
         }
-        else if( (previousTop - currentTop) > 20 )
+        else if( (previousTop - currentTop) > 0 )
         {
             console.log('上滑动');
             Show();
-        } else if( (previousTop - currentTop) < -20 ){
+        } else if( (previousTop - currentTop) < 0 ){
             console.log('下滑动');
             Hide();
         } else {
