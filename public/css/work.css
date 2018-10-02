@@ -278,12 +278,12 @@
 
 @media only screen and (max-width: 540px) {
 
-    .works-list > div{
-        display: inline-block;
-        width: 100%;
-        padding-bottom: calc( 100% * 0.79 );
-        position: relative;
-    }
+    /*.works-list > div{*/
+        /*display: inline-block;*/
+        /*width: 100%;*/
+        /*padding-bottom: calc( 100% * 0.79 );*/
+        /*position: relative;*/
+    /*}*/
 
     .works-list{
         margin-left: -25px;
