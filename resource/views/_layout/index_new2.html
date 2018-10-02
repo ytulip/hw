@@ -265,6 +265,10 @@
     function autoHideHeader(){
         currentTop = window.pageYOffset;
 
+        if(currentTop < 0)
+        {
+            alert('惯性拖拽');
+        }
 
         if(currentTop == 0)
         {
