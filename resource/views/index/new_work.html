@@ -211,7 +211,7 @@
 {% block body %}
 <div id="white-overlay" class="visible" style="z-index: 10000">
     <div class="loading-bar"></div>
-    <p id="white-overlay-title">GOAT</p>
+    <p id="white-overlay-title" class="d-none">GOAT</p>
 </div>
 <div class="m-padding only-p">
     <!--<img class="only-m" src="{{ banner_img }}" style="width: 100%;"/>-->
@@ -295,7 +295,14 @@
     //        });
     //    });
     $(function(){
-        $('.loading-bar').addClass('show');
+        if (document.referrer !== '') {
+            // 没有来源页面信息的时候，改成首页URL地址
+//            $('#white-overlay').addClass('visible');
+            $('#white-overlay-title').removeClass('d-none');
+            $('.loading-bar').addClass('show');
+        } else {
+            $('#white-overlay').removeClass('visible');
+        }
     });
 
     $(".img-show-panel2").imgLiquid();
