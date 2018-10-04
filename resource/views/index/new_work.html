@@ -192,16 +192,27 @@
         right: 0;
         top:0;
         border-bottom: 4px solid #000000;
+        transform: translateX(-100%);
+    }
+
+    .loading-bar.show{
+        position: absolute;
+        left:0;
+        right: 0;
+        top:0;
+        border-bottom: 4px solid #000000;
+        transform: translateX(0%);
+        transition: all 5s ease;
     }
 
 </style>
 {% endblock %}
 {% block pageTitle %}<div style="text-align: center;"><span style="line-height: 34px;font-size: 26px;font-family: FZLTXHB--B51-0;color: #333333;"></span></div>{% endblock %}
 {% block body %}
-<!--<div id="white-overlay" class="visible" style="z-index: 10000">-->
-    <!--<div class="loading-bar"></div>-->
-    <!--<p id="white-overlay-title">GOAT</p>-->
-<!--</div>-->
+<div id="white-overlay" class="visible" style="z-index: 10000">
+    <div class="loading-bar"></div>
+    <p id="white-overlay-title">GOAT</p>
+</div>
 <div class="m-padding only-p">
     <!--<img class="only-m" src="{{ banner_img }}" style="width: 100%;"/>-->
 
@@ -283,6 +294,9 @@
     //            controls:true,
     //        });
     //    });
+    $(function(){
+        $('.loading-bar').addClass('show');
+    });
 
     $(".img-show-panel2").imgLiquid();
 
@@ -292,6 +306,20 @@
         var r = window.location.search.substr(1).match(reg);
         if (r != null) return unescape(r[2]); return null;
     }
+
+    $('#white-overlay-title').click(function () {
+//        $('.loading-bar').addClass('show');
+    });
+
+
+    $('.loading-bar').one('webkitTransitionEnd', function(){
+//        alert('移除');
+//        if(closeMenu){
+//            $('.veil').remove();
+//        }
+//            console.log('1');
+        $('#white-overlay').addClass('animated fadeOut');
+    });
 
 
     /*加载works*/
