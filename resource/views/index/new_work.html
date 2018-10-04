@@ -295,15 +295,8 @@
     //        });
     //    });
     $(function(){
-        if(!window.name){
-            alert("第一次开这个窗口！name值"+ window.name);
-            window.name = 'test';
 
-        }else{
-            alert('刷新操作 name值：'+ window.name);
-        }
-
-        console.log(document.referrer);
+        alert(document.referrer);
         if (document.referrer !== '') {
             // 没有来源页面信息的时候，改成首页URL地址
 //            $('#white-overlay').addClass('visible');
