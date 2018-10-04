@@ -211,7 +211,7 @@
 {% block body %}
 <div id="white-overlay" class="visible" style="z-index: 10000">
     <div class="loading-bar"></div>
-    <p id="white-overlay-title" class="d-none">GOAT</p>
+    <p id="white-overlay-title" class="d-none">{{ title }}</p>
 </div>
 <div class="m-padding only-p">
     <!--<img class="only-m" src="{{ banner_img }}" style="width: 100%;"/>-->
@@ -295,6 +295,15 @@
     //        });
     //    });
     $(function(){
+        if(!window.name){
+            alert("第一次开这个窗口！name值"+ window.name);
+            window.name = 'test';
+
+        }else{
+            alert('刷新操作 name值：'+ window.name);
+        }
+
+        console.log(document.referrer);
         if (document.referrer !== '') {
             // 没有来源页面信息的时候，改成首页URL地址
 //            $('#white-overlay').addClass('visible');
