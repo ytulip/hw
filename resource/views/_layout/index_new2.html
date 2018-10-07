@@ -212,6 +212,24 @@
             }
         }
 
+        #logo-home-back{display: inline-block;position: relative;}
+
+        #logo-home-back:hover:after{
+            /*display: none;*/
+            content: " ";
+            position: absolute;
+            right: 0;
+            left: 0;
+            border-bottom: 4px solid #000000;
+            bottom: -8px;
+        }
+
+        @media only screen and (max-width: 768px){
+            #logo-home-back:hover:after{
+                display: none;
+            }
+        }
+
     </style>
     {% block style %}{% endblock %}
 </head>
@@ -228,7 +246,7 @@
         </div>
     </div>
 
-    <div class="logo-wrapper in-bl" style="vertical-align: middle;width: 50%;text-align: right;"><a href="/home"><img src="/public/images/home_icon_logo@3x.png" class="logo-height"/></a></div>
+    <div class="logo-wrapper in-bl" style="vertical-align: middle;width: 50%;text-align: right;"><a id="logo-home-back" href="/home"><img src="/public/images/home_icon_logo@3x.png" class="logo-height"/></a></div>
 </header>
 
 <div class="body-padding">

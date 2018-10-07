@@ -211,7 +211,7 @@
 {% block body %}
 <div id="white-overlay" class="visible" style="z-index: 10000">
     <div class="loading-bar"></div>
-    <p id="white-overlay-title" class="d-none">{{ title }}</p>
+    <p id="white-overlay-title" class="d-none">DORRR</p>
 </div>
 <div class="m-padding only-p">
     <!--<img class="only-m" src="{{ banner_img }}" style="width: 100%;"/>-->
@@ -296,7 +296,10 @@
     //    });
 
 $(function(){
-        if (document.referrer !== '') {
+
+
+
+        if ( (document.referrer !== '') && (performance.navigation.type != 1)) {
             // 没有来源页面信息的时候，改成首页URL地址
 //            $('#white-overlay').addClass('visible');
             $('#white-overlay-title').removeClass('d-none');
