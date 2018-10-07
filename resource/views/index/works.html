@@ -94,11 +94,11 @@
         right: 0;
     }
 
-    .work-item-shade:hover:before {
+    .img-show-panel:hover:before {
         opacity: 1;
     }
 
-    .work-item-shade:before{
+    .img-show-panel:before{
         background: rgba( 0, 0, 0, 0.5 );
         content: "";
         opacity: 0;
@@ -285,7 +285,20 @@
         });
     }
 
+    $('body').on('mouseover','.img-show-panel',function(){
+        if($(this).find('.work-item-shade').length){
+            return;
+        }else{
+            $(this).append('<div onclick="goHref(\'/work?id='+$(this).attr('data-id')+'\')" class="work-item-shade" style="position:absolute;top:0;right:0;bottom:0;left:0;z-index:99;"><div class="shadow-title title-animate">'+$(this).attr('data-title')+'</div><div class="shadow-desc">'+$(this).attr('data-abstract')+'</div></div>');
+            return;
+        }
+    });
 
+
+    $('body').on('mouseleave','.img-show-panel',function(){
+//            console.log(4);
+        $(this).find('.work-item-shade').remove();
+    });
 
     $(function(){
 //        $('.img-data').each(function(){
@@ -294,21 +307,6 @@
 //        });
 //
 //        $(".img-wrapper").imgLiquid();
-
-        $('body').on('mouseover','.img-show-panel',function(){
-            if($(this).find('.work-item-shade').length){
-                return;
-            }else{
-                $(this).append('<div onclick="goHref(\'/work?id='+$(this).attr('data-id')+'\')" class="work-item-shade" style="position:absolute;top:0;right:0;bottom:0;left:0;z-index:99;"><div class="shadow-title title-animate">'+$(this).attr('data-title')+'</div><div class="shadow-desc">'+$(this).attr('data-abstract')+'</div></div>');
-                return;
-            }
-        });
-
-
-        $('body').on('mouseleave','.img-show-panel',function(){
-//            console.log(4);
-            $(this).find('.work-item-shade').remove();
-        });
 
         refreshWork();
     });
