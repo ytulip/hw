@@ -12,7 +12,7 @@
 </body>
 <script src="https://jqm.maimaiti.cn/js/jquery.min.js"></script>
 <script src="https://jqm.maimaiti.cn/js/calendar/dialog.js?version=1.7.7"></script>
-<script src="mobile-select-date.js?version={{time()}}"></script>
+<script src="mobile-select-date.js?version=<?php echo time();?>"></script>
 <script>
     $(function()
     {
