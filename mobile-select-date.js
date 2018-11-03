@@ -62,6 +62,10 @@
 		//覆盖数据方法,so easy
 		getData: function() {
 			var json = [];
+			// console.log(this.min.getFullYear());
+			// console.log(this.max.getFullYear());
+			alert(this.min.getFullYear());
+			alert(this.max.getFullYear());
 			for (var s = this.min.getFullYear(), l = this.max.getFullYear(); s <= l; s++) {
 				var obj = {};
 				obj['id'] = obj['name'] = s;
