@@ -182,22 +182,6 @@
 <script src="/public/assets/js/imgLiquid.js"></script>
 <script>
 
-//     $(function(){
-//         if ( (document.referrer !== '') && (performance.navigation.type != 1)) {
-//        // if ( (document.referrer !== '')) {
-//             // 没有来源页面信息的时候，改成首页URL地址
-// //            $('#white-overlay').addClass('visible');
-//             $('#white-overlay-title').removeClass('d-none');
-//             $('.loading-bar').addClass('show');
-//         } else {
-//             $('#white-overlay').removeClass('visible');
-//         }
-//     });
-//
-//     $('.loading-bar').one('webkitTransitionEnd', function(){
-//         $('#white-overlay').removeClass('visible');
-//     });
-
 
 
     function getQueryString(name) {
@@ -248,45 +232,10 @@
                     $.each(data.data,function(key,val){
                         listItem += '<div class="response-free-width'+val.width_type+' work-space" onclick="goHref(\'/work?id='+val.id+'\')"><div class="img-show-panel" data-title="'+val.title+'" data-abstract="'+val.abstract+'" data-id='+val.id+'><a href="/work?id='+val.id+'"><img class="work-item" img-data="'+val.face_img+'" src="'+val.face_img+'"/></a></div></div></div><div class="work-desc-panel " onclick="goHref(\'/work?id='+val.id+'\')" class="padding-lr-15-0"><h1>'+val.title+'</h1><p>'+val.abstract+'</p></div>';
                     });
-//                    $.each(data.data,function(key,val){
-//                        listItem += '<div class="response-width'+val.width_type+'"><div class="img-wrapper" data-title="'+val.title+'" data-abstract="'+val.abstract+'" data-id='+val.id+'><a href="/work?id='+val.id+'"><img class="work-item" img-data="'+val.face_img+'" src="'+val.face_img+'"/></a></div></div></div><div class="work-desc-panel"><h1>'+val.title+'</h1><p>'+val.abstract+'</p></div>';
-//                    });
-//                    for(var item  in data.data){
-//                        console.log(item);
-//                        listItem += '<div><div class="img-wrapper"><div class="img-data" img-data="'+item.face_img+'"/></div></div></div>';
-//                    }
                     $('.works-list').append(listItem);
-
-//                    $('.work-item').each(function(){
-//                        var self = this;
-//                        $.loadImage($(this).attr('img-data')).done(function(){
-//                            var realImg = $(self).attr('img-data');
-//                            $(self).attr('src',realImg);
-//                            console.log($(self).parents('.img-wrapper'));
-//                            $(self).parents('.img-wrapper').attr('style','');
-//                            $(self).parents('.img-wrapper').imgLiquid();
-//                        });
-//                    });
-
-
-
-
-//                    $('.img-data').each(function(){
-//                        var src = $(this).attr('img-data');
-//                        var id = $(this).attr('data-id');
-//                        $(this).replaceWith('<a href="/work?id="'+id+'><img class="work-item" src="'+src+'"/></a>');
-//                    });
 
                     $(".img-wrapper").imgLiquid();
                     $(".img-show-panel").imgLiquid();
-//                    var afterHtml = '';
-//                    var imgArr = data.data.imgs.split(',');
-//                    console.log(imgArr);
-//                    $.each(imgArr,function(ind,obj){
-//                        afterHtml += '<img style="max-width: 100%;margin-bottom:28px;" src="'+obj+'">';
-//                    });
-//                    $('#work-panel').html(afterHtml);
-//                    $('#work-title').html(data.data.title);
                 }
             },
             error:function(){
@@ -294,25 +243,29 @@
         });
     }
 
+    function refreshWork_static(){
+        (function(data){
+            if(data.status){
+                var listItem = '';
+                console.log(data.data);
+
+
+                $.each(data.data,function(key,val){
+                    listItem += '<div class="response-free-width'+val.width_type+' work-space" onclick="goHref(\'/work?id='+val.id+'\')"><div class="img-show-panel" data-title="'+val.title+'" data-abstract="'+val.abstract+'" data-id='+val.id+'><a href="/work?id='+val.id+'"><img class="work-item" img-data="'+val.face_img+'" src="'+val.face_img+'"/></a></div></div></div><div class="work-desc-panel " onclick="goHref(\'/work?id='+val.id+'\')" class="padding-lr-15-0"><h1>'+val.title+'</h1><p>'+val.abstract+'</p></div>';
+                });
+                $('.works-list').append(listItem);
+
+                $(".img-wrapper").imgLiquid();
+                $(".img-show-panel").imgLiquid();
+            }
+        })("staticHoldValue1");
+    }
+
+
+
 
 
     $(function(){
-//        $('.img-data').each(function(){
-//            var src = $(this).attr('img-data');
-//            $(this).replaceWith('<img class="work-item" src="'+src+'"/>');
-//        });
-//
-//        $(".img-wrapper").imgLiquid();
-
-//        $('body').on('mouseover','.img-wrapper',function(){
-//            if($(this).find('.work-item-shade').length){
-//                return;
-//            }else{
-//                $(this).append('<div class="work-item-shade" onclick="goHref(\'/work?id='+$(this).attr('data-id')+'\')" style="position:absolute;top:0;right:0;bottom:0;left:0;z-index:99;background-color:rgba(0,0,0,.6)"><div class="shadow-title">'+$(this).attr('data-title')+'</div><div class="shadow-desc">'+$(this).attr('data-abstract')+'</div></div>');
-//                return;
-//            }
-//        });
-
         $('body').on('mouseover','.img-show-panel',function(){
             if($(this).find('.work-item-shade').length){
                 return;
@@ -323,15 +276,8 @@
         });
 
         $('body').on('mouseleave','.img-show-panel',function(){
-//            console.log(4);
             $(this).find('.work-item-shade').remove();
         });
-
-//        $('body').on('mouseleave','.img-wrapper',function(){
-////            console.log(4);
-//            $(this).find('.work-item-shade').remove();
-//        });
-
         refreshWork();
     });
 </script>
