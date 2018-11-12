@@ -1,32 +1,60 @@
 <?php
 
-function unicode_decode($name)
+//phpinfo();
+//exit;
+
+
+function copyDir($dirSrc,$dirTo)
 {
-    // 转换编码，将Unicode编码转换成可以浏览的utf-8编码
-    $pattern = '/([\w]+)|(\\\u([\w]{4}))/i';
-    preg_match_all($pattern, $name, $matches);
-    if (!empty($matches))
+    if(is_file($dirTo))
     {
-        $name = '';
-        for ($j = 0; $j < count($matches[0]); $j++)
+        echo $dirTo . '这不是一个目录';
+        return;
+    }
+    if(!file_exists($dirTo))
+    {
+        mkdir($dirTo);
+    }
+
+    if($handle=opendir($dirSrc))
+    {
+        while($filename=readdir($handle))
         {
-            $str = $matches[0][$j];
-            if (strpos($str, '\\u') === 0)
+            if($filename!='.' && $filename!='..')
             {
-                $code = base_convert(substr($str, 2, 2), 16, 10);
-                $code2 = base_convert(substr($str, 4), 16, 10);
-                $c = chr($code).chr($code2);
-                $c = iconv('UCS-2', 'UTF-8', $c);
-                $name .= $c;
+                $subsrcfile=$dirSrc . '/' . $filename;
+                $subtofile=$dirTo . '/' . $filename;
+                if(is_dir($subsrcfile))
+                {
+                    copyDir($subsrcfile,$subtofile);//再次递归调用copydir
+                }
+                if(is_file($subsrcfile))
+                {
+                    copy($subsrcfile,$subtofile);
+                }
             }
-            else
-            {
-                $name .= $str;
+        }
+        closedir($handle);
+    }
+
+}
+
+function addFileToZip($path,$zip){
+    $handler=opendir($path); //打开当前文件夹由$path指定。
+    while(($filename=readdir($handler))!==false){
+        if($filename != "." && $filename != ".."){//文件夹文件名字为'.'和‘..’，不要对他们进行操作
+            if(is_dir($path."/".$filename)){// 如果读取的某个对象是文件夹，则递归
+                addFileToZip($path."/".$filename, $zip);
+            }else{ //将文件加入zip对象
+                $zip->addFile($path."/".$filename);
             }
         }
     }
-    return $name;
+    @closedir($path);
 }
+
+
+
 
 echo '生成首页<br/>';
 $serverPath =  'http://' . $_SERVER['HTTP_HOST'];
@@ -44,3 +72,25 @@ $home = str_replace('"staticHoldValue1"',$worklist,$home);
 $home = str_replace('refreshWork();',"refreshWork_static();",$home);
 file_put_contents('temp/home.html',$home);
 echo '生成首页完成<br/>';
+
+//拷贝资源目录
+echo '拷贝资源目录<br/>';
+copyDir('public','temp/public');
+copyDir('images','temp/images');
+echo '拷贝资源目录结束<br/>';
+
+//生产压缩包并下载
+$zip = new ZipArchive();
+if ($zip->open('demo.zip', ZipArchive::CREATE) === TRUE) {
+    addFileToZip('temp/', $zip); //调用方法，对要打包的根目录进行操作，并将ZipArchive的对象传递给方法
+    $zip->close(); //关闭处理的zip文件
+    echo 33;
+}else{
+    echo '文件打开失败';
+}
+
+
+header("Location:" . $serverPath . '/demo.zip');
+exit;
+
+//echo '生产压缩包结束<br/>';
