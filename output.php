@@ -212,10 +212,49 @@ foreach ($workIds as $val)
     $work = str_replace('href="/contact"','href="contact.html"',$work);
     $work = str_replace('href="/home"','href="home.html"',$work);
     $work = str_replace('"/images/','"images/',$work);
+
+    /*上一个项目，下一个项目替换,正则匹配*/
+    $matches = [];
+    preg_match_all('/"\/work\?id=([0-9]+)"/i', $work, $matches);
+//    foreach ($matches as $key=>$value)
+//    {
+//
+//    }
+    if( isset($matches[0]) )
+    {
+        foreach ($matches[0] as $key=>$value)
+        {
+            $work = str_replace($value,'"work' . $matches[1][$key] . '.html"',$work);
+        }
+    }
+
     file_put_contents('temp/work'.$val.'.html',$work);
     echo '生产work'.$val.'<br/>';
 }
 echo '生产work详情完成<br/>';
+
+
+echo '生成我们是谁<br/>';
+$whoWeAre = file_get_contents($serverPath . '/about');
+$whoWeAre = str_replace('"/public','"public',$whoWeAre);
+$whoWeAre = str_replace('href="/works"','href="works.html"',$whoWeAre);
+$whoWeAre = str_replace('href="/about"','href="about.html"',$whoWeAre);
+$whoWeAre = str_replace('href="/contact"','href="contact.html"',$whoWeAre);
+$whoWeAre = str_replace('href="/home"','href="home.html"',$whoWeAre);
+$whoWeAre = str_replace('"/images/','"images/',$whoWeAre);
+file_put_contents('temp/about.html',$whoWeAre);
+echo '生产我们是谁完成<br/>';
+
+echo '生成联系我们<br/>';
+$contactUs = file_get_contents($serverPath . '/contact');
+$contactUs = str_replace('"/public','"public',$contactUs);
+$contactUs = str_replace('href="/works"','href="works.html"',$contactUs);
+$contactUs = str_replace('href="/about"','href="about.html"',$contactUs);
+$contactUs = str_replace('href="/contact"','href="contact.html"',$contactUs);
+$contactUs = str_replace('href="/home"','href="home.html"',$contactUs);
+$contactUs = str_replace('"/images/','"images/',$contactUs);
+file_put_contents('temp/contact.html',$contactUs);
+echo '生成联系我们完成<br/>';
 
 
 //拷贝资源目录
