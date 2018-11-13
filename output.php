@@ -90,7 +90,8 @@ if ($zip->open('demo.zip', ZipArchive::CREATE) === TRUE) {
 }
 
 
-header("Location:" . $serverPath . '/demo.zip');
+//header("Location:" . $serverPath . '/demo.zip');
+echo '<script>location.href="'.$serverPath . '/demo.zip'.'"</script>';
 exit;
 
 //echo '生产压缩包结束<br/>';
