@@ -76,7 +76,7 @@ echo '生成首页完成<br/>';
 //拷贝资源目录
 echo '拷贝资源目录<br/>';
 copyDir('public','temp/public');
-copyDir('images','temp/images');
+//copyDir('images','temp/images');
 echo '拷贝资源目录结束<br/>';
 
 //生产压缩包并下载
