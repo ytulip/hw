@@ -251,7 +251,7 @@
 
 
                 $.each(data.data,function(key,val){
-                    listItem += '<div class="response-free-width'+val.width_type+' work-space" onclick="goHref(\'/work?id='+val.id+'\')"><div class="img-show-panel" data-title="'+val.title+'" data-abstract="'+val.abstract+'" data-id='+val.id+'><a href="/work?id='+val.id+'"><img class="work-item" img-data="'+val.face_img+'" src="'+val.face_img+'"/></a></div></div></div><div class="work-desc-panel " onclick="goHref(\'/work?id='+val.id+'\')" class="padding-lr-15-0"><h1>'+val.title+'</h1><p>'+val.abstract+'</p></div>';
+                    listItem += '<div class="response-free-width'+val.width_type+' work-space" onclick="goHref(\'work'+val.id+'.html\')"><div class="img-show-panel" data-title="'+val.title+'" data-abstract="'+val.abstract+'" data-id='+val.id+'><a href="/work?id='+val.id+'"><img class="work-item" img-data="'+val.face_img+'" src="'+val.face_img+'"/></a></div></div></div><div class="work-desc-panel " onclick="goHref(\'work'+val.id+'.html\')" class="padding-lr-15-0"><h1>'+val.title+'</h1><p>'+val.abstract+'</p></div>';
                 });
                 $('.works-list').append(listItem);
 
