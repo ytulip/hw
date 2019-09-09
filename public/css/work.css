@@ -147,7 +147,10 @@
     letter-spacing: 0;margin-bottom: 30px;}
 
 .menu-text{font-size: 60px;}
-.home-margin{margin-top: 127px;margin-bottom: 127px;}
+.home-margin{
+    margin-top: 127px;
+    /*margin-bottom: 127px;*/
+}
 
 
 .easy-l .response-free-width2:nth-child(1)
