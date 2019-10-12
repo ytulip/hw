@@ -74,6 +74,8 @@ $home = str_replace('href="/about"','href="about.html"',$home);
 $home = str_replace('href="/contact"','href="contact.html"',$home);
 $home = str_replace('href="/home"','href="home.html"',$home);
 
+/*替换首页的更多*/
+$home = str_replace("location.href = '/works'", "location.href = '/works.html'",$home);
 file_put_contents('temp/home.html',$home);
 echo '生成首页完成<br/>';
 
